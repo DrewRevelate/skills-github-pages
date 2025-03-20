@@ -553,6 +553,141 @@ body {
   background: #333;
 }
 
+/* Timeline specific styles */
+.timeline-column {
+  position: relative;
+  border-right: 1px solid rgba(225, 6, 0, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  box-shadow: 5px 0 15px -5px rgba(0,0,0,0.2);
+  border-radius: 0 0 0 8px;
+  color: white;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--racing-red) 0%, var(--accent-yellow) 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(225, 6, 0, 0.2);
+  z-index: 1;
+}
+
+.era-button {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem 1rem 40px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.era-button:hover {
+  background: rgba(255,255,255,0.8);
+  transform: translateX(5px);
+}
+
+.era-button.active {
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateX(8px);
+  border-left: 3px solid var(--racing-red);
+}
+
+.era-button::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--racing-dark);
+  border: 3px solid var(--racing-red);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  z-index: 3;
+}
+
+.era-button.active::before {
+  background: var(--racing-red);
+  transform: translateY(-50%) scale(1.3);
+  box-shadow: 0 0 0 8px rgba(225, 6, 0, 0.15);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(225, 6, 0, 0.0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.0);
+  }
+}
+
+.efficiency-meter-container {
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.efficiency-meter-container::before {
+  content: 'Efficiency Scale';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+  color: white;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(225, 6, 0, 0.2);
+}
+
+.efficiency-meter {
+  margin: 0.5rem 0;
+  background: rgba(0,0,0,0.3);
+  height: 36px;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.efficiency-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.5rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+}
+
 /* Loading Styles */
 .loading-container {
   text-align: center;
