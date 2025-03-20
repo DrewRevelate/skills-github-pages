@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import { motion } from 'framer-motion';
 
 const PresenterProfile = () => {
   return (
@@ -17,21 +16,15 @@ const PresenterProfile = () => {
             {/* Left Column: Image and Specialties */}
             <div className="profile-left-column">
               <div className="profile-image-container animate">
-                <motion.div 
-                  className="profile-image"
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(225,6,0,0.3)" }}
-                >
+                <div className="profile-image">
                   <img src="/images/profile.jpeg" alt="Drew Lambert" width="220" height="220" />
-                </motion.div>
+                </div>
               </div>
               
               <div className="profile-specialties animate delay-2">
                 <h3>Specialties</h3>
                 <div className="specialties-grid">
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -41,22 +34,16 @@ const PresenterProfile = () => {
                       </svg>
                     </span>
                     RevOps Strategy
-                  </motion.div>
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  </div>
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                       </svg>
                     </span>
                     Apex & LWC
-                  </motion.div>
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  </div>
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -64,11 +51,8 @@ const PresenterProfile = () => {
                       </svg>
                     </span>
                     Workflow Automation
-                  </motion.div>
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  </div>
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -76,11 +60,8 @@ const PresenterProfile = () => {
                       </svg>
                     </span>
                     API Integrations
-                  </motion.div>
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  </div>
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="3"></circle>
@@ -88,11 +69,8 @@ const PresenterProfile = () => {
                       </svg>
                     </span>
                     Data Architecture
-                  </motion.div>
-                  <motion.div 
-                    className="specialty-item"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
-                  >
+                  </div>
+                  <div className="specialty-item">
                     <span className="specialty-icon">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
@@ -101,7 +79,7 @@ const PresenterProfile = () => {
                       </svg>
                     </span>
                     Revenue Analytics
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -114,27 +92,21 @@ const PresenterProfile = () => {
               </div>
               
               <div className="profile-companies animate delay-1">
-                <motion.div 
-                  className="company-block"
-                  whileHover={{ boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
-                >
+                <div className="company-block">
                   <h3 className="profile-company">REVELATE OPERATIONS, LLC</h3>
                   <p className="profile-role">Founder & Principal Consultant</p>
                   <p className="profile-description">
                     Drew Lambert is a Revenue Operations expert with over 7 years of experience in Salesforce and automation technologies. He specializes in designing and implementing revenue systems that enhance operational efficiency and drive measurable business growth.
                   </p>
-                </motion.div>
+                </div>
                 
-                <motion.div 
-                  className="company-block"
-                  whileHover={{ boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
-                >
+                <div className="company-block">
                   <h3 className="profile-company">BEVI</h3>
                   <p className="profile-role">Senior Salesforce Engineer</p>
                   <p className="profile-description">
                     At Bevi, Drew leads enterprise Salesforce engineering initiatives, focusing on scaling revenue operations through intelligent automation, cross-platform data integration, and streamlined business processes.
                   </p>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
@@ -352,6 +324,13 @@ const PresenterProfile = () => {
             transition: all 0.3s ease;
           }
           
+          .specialty-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: rgba(225, 6, 0, 0.3);
+          }
+          
           .specialty-icon {
             display: inline-flex;
             align-items: center;
@@ -412,6 +391,7 @@ const PresenterProfile = () => {
           
           @media (max-width: 768px) {
             .profile-left-column {
+              display: flex;
               flex-direction: column;
               align-items: center;
             }
@@ -464,30 +444,6 @@ const PresenterProfile = () => {
             #slide-1 .slide-content {
               padding-bottom: 600px; /* Extreme padding for smallest screens */
             }
-          }
-          
-          /* Animation classes */
-          .animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-          }
-          
-          .active .animate {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          
-          .delay-1 {
-            transition-delay: 0.2s;
-          }
-          
-          .delay-2 {
-            transition-delay: 0.4s;
-          }
-          
-          .delay-3 {
-            transition-delay: 0.6s;
           }
         `}</style>
       </section>

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import ProgressBar from './ProgressBar';
-import Navigation from './Navigation';
 import MobileTouchNav from './MobileTouchNav';
 
 const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSlide }) => {
@@ -20,6 +18,13 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
     // Apply mobile-specific class
     if (isMobile) {
       document.body.classList.add('mobile-device');
+      
+      // Make nav buttons more prominent on mobile
+      const navButtons = document.querySelectorAll('.nav-button');
+      navButtons.forEach(btn => {
+        btn.style.width = '65px';
+        btn.style.height = '65px';
+      });
     }
 
     // Add keyboard navigation
@@ -48,6 +53,13 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
         stripe.classList.add('animate', 'race');
         stripe.style.animationDelay = (0.1 * i) + 's';
       });
+      
+      // Add bounce animation to presenter image if it exists
+      const presenterImage = document.querySelector('.presenter-image');
+      if (presenterImage) {
+        presenterImage.classList.add('animate', 'bounce');
+        presenterImage.style.animationDelay = '0.8s';
+      }
     }, 200);
 
     return () => {

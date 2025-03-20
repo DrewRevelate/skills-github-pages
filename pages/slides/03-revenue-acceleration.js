@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const RevenueAcceleration = () => {
   const [needleRevved, setNeedleRevved] = useState(false);
@@ -85,7 +84,7 @@ const RevenueAcceleration = () => {
               <p className="animate delay-1">Most of their time is spent on administrative tasks, rather than the high-value activities that drive revenue. In today's fast-paced sales landscape, every minute saved is money earned.</p>
               
               <h3 className="animate delay-2 secondary-heading">How Automation Turbocharges Revenue:</h3>
-              <ul className="racing-list animate delay-3">
+              <ul className="racing-list animate-list">
                 <li>Building a modern sales tech stack</li>
                 <li>Boosting efficiency at each stage of the sales process</li>
                 <li>Balancing tech with the human touch for maximum impact</li>
@@ -112,17 +111,10 @@ const RevenueAcceleration = () => {
                 <div className="speedometer-markings">
                   {generateSpeedometerMarkings()}
                 </div>
-                <motion.div 
-                  className="speedometer-needle" 
-                  initial={{ rotate: -145, originX: "left", originY: "center" }}
-                  animate={needleRevved ? { 
-                    rotate: 30,
-                    transition: { 
-                      duration: 60, 
-                      ease: "easeOut" 
-                    }
-                  } : {}}
-                />
+                <div 
+                  className={`speedometer-needle ${needleRevved ? 'rev-animation' : ''}`}
+                  id="speedometer-needle"
+                ></div>
                 <div className="speedometer-center"></div>
               </div>
             </div>
@@ -432,6 +424,20 @@ const RevenueAcceleration = () => {
                         inset 0 1px 3px rgba(255,255,255,0.2);
           }
           
+          @keyframes revEngine {
+            0% { transform: translateY(-50%) rotate(-145deg); }
+            20% { transform: translateY(-50%) rotate(-75deg); }
+            30% { transform: translateY(-50%) rotate(-65deg); }
+            40% { transform: translateY(-50%) rotate(-50deg); }
+            45% { transform: translateY(-50%) rotate(-45deg); }
+            50% { transform: translateY(-50%) rotate(-30deg); }
+            100% { transform: translateY(-50%) rotate(30deg); }
+          }
+          
+          .rev-animation {
+            animation: revEngine 60s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+          }
+          
           /* Enhanced Markings */
           .speedometer-markings {
             position: absolute;
@@ -513,6 +519,9 @@ const RevenueAcceleration = () => {
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.8rem;
+            text-align: center;
+            border-radius: 12px;
           }
           
           .stat-card:hover {
@@ -523,6 +532,10 @@ const RevenueAcceleration = () => {
           .stat-number {
             color: var(--racing-red);
             text-shadow: 0 0 10px rgba(225, 6, 0, 0.3);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1;
           }
           
           /* Poll container styles */
@@ -533,6 +546,17 @@ const RevenueAcceleration = () => {
             padding: 2rem;
             border-radius: 12px;
             margin-top: 2rem;
+            position: relative;
+          }
+          
+          .poll-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
           }
           
           .poll-header {
@@ -545,6 +569,8 @@ const RevenueAcceleration = () => {
           .poll-header h3 {
             font-size: 1.4rem;
             color: white;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
           }
           
           .poll-user-id {
@@ -560,6 +586,7 @@ const RevenueAcceleration = () => {
             margin-bottom: 1.5rem;
             color: white;
             font-weight: 500;
+            line-height: 1.4;
           }
           
           .poll-options {
@@ -573,7 +600,7 @@ const RevenueAcceleration = () => {
             display: flex;
             align-items: center;
             padding: 1rem 1.2rem;
-            background: rgba(255,255,255,0.05);
+            background: rgba(50, 50, 50, 0.8);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             cursor: pointer;
@@ -581,14 +608,17 @@ const RevenueAcceleration = () => {
           }
           
           .poll-option:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateX(5px);
+            background: rgba(60, 60, 60, 0.95);
+            border-color: var(--racing-red);
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
           }
           
           .poll-option.selected {
-            background: rgba(225, 6, 0, 0.15);
-            border-color: rgba(225, 6, 0, 0.3);
+            background: rgba(225, 6, 0, 0.3);
+            border-color: rgba(225, 6, 0, 0.6);
+            border-left: 4px solid var(--racing-red);
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.2);
           }
           
           .poll-option-check {
@@ -614,8 +644,9 @@ const RevenueAcceleration = () => {
           }
           
           .poll-option-text {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.05rem;
+            color: rgba(255,255,255,1);
+            font-size: 1.15rem;
+            font-weight: 500;
           }
           
           .poll-results {
@@ -646,6 +677,7 @@ const RevenueAcceleration = () => {
           .poll-result-label {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
           }
           
           .poll-result-percentage {
@@ -658,6 +690,7 @@ const RevenueAcceleration = () => {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
           }
           
           .poll-fill {
@@ -665,6 +698,7 @@ const RevenueAcceleration = () => {
             background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
             border-radius: 4px;
             transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(225, 6, 0, 0.3);
           }
           
           .poll-actions {
@@ -684,6 +718,7 @@ const RevenueAcceleration = () => {
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(225, 6, 0, 0.3);
+            font-size: 1.15rem;
           }
           
           .poll-submit:hover {
@@ -694,12 +729,13 @@ const RevenueAcceleration = () => {
           
           .poll-skip {
             background: transparent;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.8);
             border: none;
             padding: 0.8rem 1.5rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 1.05rem;
           }
           
           .poll-skip:hover {
@@ -752,6 +788,21 @@ const RevenueAcceleration = () => {
             transform: scale(1);
           }
           
+          /* Staggered animations for lists */
+          .active .animate-list li {
+            opacity: 0;
+            animation: slide-up-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+          
+          .active .animate-list li:nth-child(1) { animation-delay: 0.5s; }
+          .active .animate-list li:nth-child(2) { animation-delay: 0.7s; }
+          .active .animate-list li:nth-child(3) { animation-delay: 0.9s; }
+          
+          @keyframes slide-up-fade {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          
           /* Responsive styles */
           @media (max-width: 992px) {
             .content-grid, .stats-container {
@@ -779,6 +830,16 @@ const RevenueAcceleration = () => {
             .poll-submit, .poll-skip {
               width: 100%;
               text-align: center;
+            }
+
+            #slide-2 .slide-content {
+              padding-bottom: 150px; /* Extra padding for mobile */
+            }
+          }
+
+          @media (max-width: 480px) {
+            #slide-2 .slide-content {
+              padding-bottom: 200px; /* Even more padding for smallest screens */
             }
           }
         `}</style>
