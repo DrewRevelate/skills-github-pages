@@ -52,17 +52,43 @@ function deployToGitHub() {
       console.log('No changes to commit or commit failed. Continuing...');
     }
     
-    // Push to GitHub
-    console.log(`Pushing to ${branch} branch on GitHub...`);
+    // Build the Next.js app
+    console.log('Building Next.js app for static export...');
+    execSync('npm run build', { stdio: 'inherit' });
+    
+    // Create a .nojekyll file to prevent GitHub Pages from ignoring files that start with underscores
+    console.log('Creating .nojekyll file...');
+    const fs = require('fs');
+    fs.writeFileSync('./out/.nojekyll', '');
+    
+    // Create CNAME file if needed for custom domain
+    console.log('Creating CNAME file...');
+    fs.writeFileSync('./out/CNAME', 'fullthrottle.revelateops.com');
+    
+    // Deploy the out directory to gh-pages branch
+    console.log('Deploying to GitHub Pages...');
+    const ghpages = require('gh-pages');
+    ghpages.publish('out', {
+      branch: 'gh-pages',
+      message: 'Auto-deployed from deploy-to-github.js',
+      dotfiles: true,  // Include .nojekyll file
+    }, function(err) {
+      if (err) {
+        console.error('GitHub Pages deployment error:', err);
+      } else {
+        console.log('\nDeployment to GitHub Pages completed!');
+        console.log(`Your presentation should now be available at: https://drewrevelate.github.io/RevOps_Presentation or https://fullthrottle.revelateops.com`);
+      }
+    });
+    
+    // Push source code to main branch as well
+    console.log(`Pushing source code to ${branch} branch on GitHub...`);
     try {
       execSync(`git push -f origin ${branch}`, { stdio: 'inherit' });
     } catch (err) {
       console.error('Push failed, trying to set upstream branch...');
       execSync(`git push -f -u origin ${branch}`, { stdio: 'inherit' });
     }
-    
-    console.log('\nDeployment to GitHub completed!');
-    console.log(`Your presentation is now available at: https://github.com/DrewRevelate/RevOps_Presentation`);
     
   } catch (error) {
     console.error('Deployment failed:', error);

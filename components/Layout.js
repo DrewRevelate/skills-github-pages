@@ -1,48 +1,58 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import MobileTouchNav from './MobileTouchNav';
 
 const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSlide }) => {
+  const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    // Set all slides to active in Next.js context (different from HTML version)
-    const currentSlide = document.querySelector('.slide');
-    if (currentSlide) {
-      currentSlide.classList.add('active');
-    }
-    
-    // Force window scroll to top on slide load
+    // Scroll to top on route change
     window.scrollTo(0, 0);
     
-    // Check if we're on a mobile device
-    const isMobile = window.innerWidth <= 768 || 
+    // Check if we're on a mobile device - client-side only
+    if (typeof window !== 'undefined') {
+      const detectMobile = window.innerWidth <= 768 || 
                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    // Apply mobile-specific class
-    if (isMobile) {
-      document.body.classList.add('mobile-device');
       
-      // Make nav buttons more prominent on mobile
-      const navButtons = document.querySelectorAll('.nav-button');
-      navButtons.forEach(btn => {
-        btn.style.width = '65px';
-        btn.style.height = '65px';
-      });
+      setIsMobile(detectMobile);
+      
+      // Apply mobile-specific class
+      if (detectMobile) {
+        document.body.classList.add('mobile-device');
+      } else {
+        document.body.classList.remove('mobile-device');
+      }
     }
 
-    // Add keyboard navigation
+    // Add keyboard navigation using Next.js router
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowRight' || event.key === ' ') {
-        if (nextSlide) window.location.href = nextSlide;
+        if (nextSlide) router.push(nextSlide);
       } else if (event.key === 'ArrowLeft') {
-        if (prevSlide) window.location.href = prevSlide;
+        if (prevSlide) router.push(prevSlide);
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     
+  }, [prevSlide, nextSlide, router]);
+  
+  // Add a second useEffect for animations to avoid dependency issues
+  useEffect(() => {
+    // Only run animations on client-side
+    if (typeof window === 'undefined') return;
+    
+    // Make sure the slide is active
+    const slideElement = document.querySelector('.slide');
+    if (slideElement && !slideElement.classList.contains('active')) {
+      slideElement.classList.add('active');
+    }
+    
     // Animation for slide elements with the animate class
-    setTimeout(() => {
+    const animationTimeout = setTimeout(() => {
       const elements = document.querySelectorAll('.animate');
       elements.forEach((element, index) => {
         setTimeout(() => {
@@ -64,11 +74,12 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
         presenterImage.style.animationDelay = '0.8s';
       }
     }, 200);
-
+    
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(animationTimeout);
     };
-  }, [prevSlide, nextSlide]);
+
+  }, []);
 
   // Calculate progress percentage
   const progressPercentage = (currentSlide / totalSlides) * 100;

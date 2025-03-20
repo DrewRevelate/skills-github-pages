@@ -271,8 +271,8 @@ const MobileTouchNav = ({ prevSlide, nextSlide }) => {
               window.navigator.vibrate(50);
             }
             
-            // Navigate to previous slide
-            window.location.href = prevSlide;
+            // Navigate to previous slide using Next.js router
+            router.push(prevSlide);
             
             // Remove the visual feedback class after animation
             setTimeout(() => {
@@ -290,8 +290,8 @@ const MobileTouchNav = ({ prevSlide, nextSlide }) => {
               window.navigator.vibrate(50);
             }
             
-            // Navigate to next slide
-            window.location.href = nextSlide;
+            // Navigate to next slide using Next.js router
+            router.push(nextSlide);
             
             // Remove the visual feedback class after animation
             setTimeout(() => {

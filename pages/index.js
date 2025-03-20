@@ -8,11 +8,11 @@ export default function Home() {
   useEffect(() => {
     // Wait for loading animation before redirecting
     const timer = setTimeout(() => {
-      window.location.href = '/slides/01-introduction';
+      router.push('/slides/01-introduction');
     }, 2000);
     
     return () => clearTimeout(timer);
-  }, []);
+  }, [router]);
 
   return (
     <div className="loading">
