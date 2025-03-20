@@ -272,7 +272,7 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
             }
             
             // Navigate to previous slide
-            router.push(prevSlide);
+            window.location.href = prevSlide;
             
             // Remove the visual feedback class after animation
             setTimeout(() => {
@@ -291,7 +291,7 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
             }
             
             // Navigate to next slide
-            router.push(nextSlide);
+            window.location.href = nextSlide;
             
             // Remove the visual feedback class after animation
             setTimeout(() => {

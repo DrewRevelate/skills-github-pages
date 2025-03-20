@@ -5,7 +5,7 @@ const Navigation = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => {
   return (
     <div className="slide-navigation">
       {prevSlide ? (
-        <Link href={prevSlide} className="nav-button prev">
+        <Link href={prevSlide} className="nav-button prev" prefetch={true}>
           ←
         </Link>
       ) : (
@@ -13,7 +13,7 @@ const Navigation = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => {
       )}
       
       {nextSlide ? (
-        <Link href={nextSlide} className="nav-button next">
+        <Link href={nextSlide} className="nav-button next" prefetch={true}>
           →
         </Link>
       ) : (

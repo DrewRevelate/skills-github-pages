@@ -24,6 +24,7 @@ jobs:
           npm ci
           npm run build
           touch out/.nojekyll
+          echo "fullthrottle.revelateops.com" > out/CNAME
           
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

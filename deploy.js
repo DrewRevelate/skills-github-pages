@@ -5,15 +5,20 @@ const { execSync } = require('child_process');
 // Create a .nojekyll file to bypass Jekyll processing on GitHub Pages
 const outDir = path.join(__dirname, 'out');
 const nojekyllPath = path.join(outDir, '.nojekyll');
+const cnamePath = path.join(outDir, 'CNAME');
 
 try {
   // Build and export the static site
   console.log('Building and exporting the presentation...');
-  execSync('npm run export', { stdio: 'inherit' });
+  execSync('npm run build', { stdio: 'inherit' });
   
   // Create .nojekyll file
   console.log('Creating .nojekyll file...');
   fs.writeFileSync(nojekyllPath, '');
+  
+  // Create CNAME file for custom domain
+  console.log('Creating CNAME file for custom domain...');
+  fs.writeFileSync(cnamePath, 'fullthrottle.revelateops.com');
   
   // Initialize git repo in the out directory if it doesn't exist
   if (!fs.existsSync(path.join(outDir, '.git'))) {
@@ -32,8 +37,7 @@ try {
   
   console.log('\nDeployment completed successfully!');
   console.log('\nYour presentation should now be available at:');
-  console.log('https://[your-username].github.io/full-throttle-presentation/');
-  console.log('\nNote: Replace [your-username] with your GitHub username');
+  console.log('https://fullthrottle.revelateops.com/');
   
 } catch (error) {
   console.error('Deployment failed:', error);
