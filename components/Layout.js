@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 import MobileTouchNav from './MobileTouchNav';
 
 const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSlide }) => {
@@ -86,13 +87,6 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
 
   return (
     <>
-      <Head>
-        <title>{title || 'Full Throttle Revenue: How RevOps & Automation Drive Success'}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="theme-color" content="#121212" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </Head>
 
       <div className="presentation-container">
         <div className="slides-wrapper">

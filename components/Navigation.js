@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
@@ -5,7 +7,7 @@ const Navigation = ({ prevSlide, nextSlide }) => {
   return (
     <div className="slide-navigation">
       {prevSlide ? (
-        <Link href={prevSlide} className="nav-button prev" prefetch>
+        <Link href={prevSlide} className="nav-button prev" prefetch={true}>
           ←
         </Link>
       ) : (
@@ -13,7 +15,7 @@ const Navigation = ({ prevSlide, nextSlide }) => {
       )}
       
       {nextSlide ? (
-        <Link href={nextSlide} className="nav-button next" prefetch>
+        <Link href={nextSlide} className="nav-button next" prefetch={true}>
           →
         </Link>
       ) : (

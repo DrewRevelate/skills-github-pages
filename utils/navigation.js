@@ -11,33 +11,33 @@ export const SLIDE_PATHS = [
 ];
 
 /**
- * Get the current slide number based on the current path
- * @param {string} currentPath - Current path from router
+ * Get the current slide number based on the current pathname
+ * @param {string} pathname - Current pathname from usePathname()
  * @returns {number} - Current slide number (1-based)
  */
-export const getCurrentSlideNumber = (currentPath) => {
-  const index = SLIDE_PATHS.findIndex(path => path === currentPath);
+export const getCurrentSlideNumber = (pathname) => {
+  const index = SLIDE_PATHS.findIndex(path => path === pathname);
   return index !== -1 ? index + 1 : 1;
 };
 
 /**
  * Get the next slide path
- * @param {string} currentPath - Current path from router
+ * @param {string} pathname - Current pathname from usePathname()
  * @returns {string|null} - Next slide path or null if on last slide
  */
-export const getNextSlidePath = (currentPath) => {
-  const index = SLIDE_PATHS.findIndex(path => path === currentPath);
+export const getNextSlidePath = (pathname) => {
+  const index = SLIDE_PATHS.findIndex(path => path === pathname);
   if (index === -1 || index === SLIDE_PATHS.length - 1) return null;
   return SLIDE_PATHS[index + 1];
 };
 
 /**
  * Get the previous slide path
- * @param {string} currentPath - Current path from router
+ * @param {string} pathname - Current pathname from usePathname()
  * @returns {string|null} - Previous slide path or null if on first slide
  */
-export const getPrevSlidePath = (currentPath) => {
-  const index = SLIDE_PATHS.findIndex(path => path === currentPath);
+export const getPrevSlidePath = (pathname) => {
+  const index = SLIDE_PATHS.findIndex(path => path === pathname);
   if (index <= 0) return null;
   return SLIDE_PATHS[index - 1];
 };
