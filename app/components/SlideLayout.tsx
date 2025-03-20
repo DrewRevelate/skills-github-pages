@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from 'react';
 import SlideNavigation from './SlideNavigation';
 import KeyboardNavigation from './KeyboardNavigation';
