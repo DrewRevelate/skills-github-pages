@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => {
+const MobileTouchNav = ({ prevSlide, nextSlide }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -46,8 +46,8 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
       // Show hint only on first visit or if reset
       const swipeHintState = localStorage.getItem('swipeHintSeen');
       
-      // Only show on first slide or if explicitly requested
-      if (swipeHintState === 'true' && !window.location.search.includes('resetHint') && currentSlide !== 1) {
+      // Only show if explicitly requested
+      if (swipeHintState === 'true' && !window.location.search.includes('resetHint')) {
         return;
       }
       
@@ -262,7 +262,7 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
         // Navigate based on swipe direction
         if (horizontalDist > 0) {
           // Swipe right - go back
-          if (currentSlide > 1 && prevSlide) {
+          if (prevSlide) {
             // Add visual feedback for swipe
             document.body.classList.add('swipe-right');
             
@@ -281,7 +281,7 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
           }
         } else {
           // Swipe left - go forward
-          if (currentSlide < totalSlides && nextSlide) {
+          if (nextSlide) {
             // Add visual feedback for swipe
             document.body.classList.add('swipe-left');
             
@@ -314,7 +314,7 @@ const MobileTouchNav = ({ currentSlide, totalSlides, prevSlide, nextSlide }) => 
       document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentSlide, totalSlides, prevSlide, nextSlide, router]);
+  }, [prevSlide, nextSlide, router]);
 
   // This component doesn't render anything visible
   return null;

@@ -2,35 +2,6 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import { motion } from 'framer-motion';
 
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const cardHover = {
-  rest: { scale: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.1)" },
-  hover: { 
-    scale: 1.03, 
-    boxShadow: "0 8px 25px rgba(225,6,0,0.15)",
-    borderColor: "rgba(225,6,0,0.3)"
-  }
-};
-
 const PresenterProfile = () => {
   return (
     <Layout
@@ -40,551 +11,485 @@ const PresenterProfile = () => {
       prevSlide="/slides/01-introduction"
       nextSlide="/slides/03-revenue-acceleration"
     >
-      <section className="slide active" id="presenter-profile">
+      <section className="slide active profile-slide" id="slide-1">
         <div className="slide-content">
-          <motion.div
-            className="slide-header"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-          >
-            <h2>Meet Your <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              style={{ color: 'var(--racing-red)' }}
-            >Presenter</motion.span></h2>
-            <div className="slide-subtitle">From Enterprise Sales to Revenue Operations</div>
-          </motion.div>
-          
-          <motion.div
-            className="profile-container"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '3rem',
-              marginTop: '2rem'
-            }}
-          >
-            <motion.div
-              className="profile-left-column"
-              variants={fadeIn}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start'
-              }}
-            >
-              <motion.div 
-                className="profile-header" 
-                style={{ marginBottom: '2rem' }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                <div 
-                  className="profile-name"
-                  style={{
-                    fontSize: '2.5rem',
-                    fontWeight: '700',
-                    color: 'white',
-                    marginBottom: '1rem',
-                    position: 'relative'
-                  }}
+          <div className="profile-container">
+            {/* Left Column: Image and Specialties */}
+            <div className="profile-left-column">
+              <div className="profile-image-container animate">
+                <motion.div 
+                  className="profile-image"
+                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(225,6,0,0.3)" }}
                 >
-                  Drew Lambert
-                </div>
-                <div 
-                  className="profile-title"
-                  style={{
-                    fontSize: '1.4rem',
-                    color: 'rgba(255,255,255,0.9)',
-                    marginBottom: '0.5rem'
-                  }}
-                >
-                  Revenue Operations Expert
-                </div>
-                <div 
-                  className="profile-company"
-                  style={{
-                    fontSize: '1.2rem',
-                    color: 'var(--racing-red)',
-                    fontWeight: '600'
-                  }}
-                >
-                  Revelate Operations, LLC
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                className="profile-image"
-                whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(225,6,0,0.3)", borderColor: "var(--racing-red)" }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  width: '200px',
-                  height: '200px',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  border: '3px solid var(--racing-red)',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                  marginBottom: '2rem',
-                  position: 'relative'
-                }}
-              >
-                <img 
-                  src="/images/profile.jpeg" 
-                  alt="Drew Lambert" 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
-                />
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: '40%',
-                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
-                    pointerEvents: 'none'
-                  }}
-                />
-              </motion.div>
-              
-              <div 
-                className="profile-background"
-                style={{
-                  marginBottom: '2rem'
-                }}
-              >
-                <h3 
-                  className="secondary-heading"
-                  style={{
-                    marginBottom: '1rem'
-                  }}
-                >
-                  Background
-                </h3>
-                <motion.ul 
-                  className="racing-list"
-                  style={{
-                    listStyle: 'none',
-                    margin: '0',
-                    padding: '0'
-                  }}
-                  initial="hidden"
-                  animate="visible"
-                  variants={staggerContainer}
-                >
-                  <motion.li 
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-                    }}
-                    style={{ 
-                      marginBottom: '1rem',
-                      paddingLeft: '30px',
-                      position: 'relative'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ 
-                        position: 'absolute',
-                        left: 0,
-                        top: '6px',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--racing-red)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '12px',
-                        color: 'white',
-                        fontWeight: 'bold'
-                      }}
-                    >✓</motion.span>
-                    10+ years in B2B SaaS sales and operations
-                  </motion.li>
-                  <motion.li 
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } }
-                    }}
-                    style={{ 
-                      marginBottom: '1rem',
-                      paddingLeft: '30px',
-                      position: 'relative'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ 
-                        position: 'absolute',
-                        left: 0,
-                        top: '6px',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--racing-red)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '12px',
-                        color: 'white',
-                        fontWeight: 'bold'
-                      }}
-                    >✓</motion.span>
-                    Certified Salesforce Administrator & Developer
-                  </motion.li>
-                  <motion.li 
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.2 } }
-                    }}
-                    style={{ 
-                      marginBottom: '1rem',
-                      paddingLeft: '30px',
-                      position: 'relative'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ 
-                        position: 'absolute',
-                        left: 0,
-                        top: '6px',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--racing-red)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '12px',
-                        color: 'white',
-                        fontWeight: 'bold'
-                      }}
-                    >✓</motion.span>
-                    Previously VP of Sales at Venture-Backed SaaS Company
-                  </motion.li>
-                  <motion.li 
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.3 } }
-                    }}
-                    style={{ 
-                      marginBottom: '1rem',
-                      paddingLeft: '30px',
-                      position: 'relative'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ 
-                        position: 'absolute',
-                        left: 0,
-                        top: '6px',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--racing-red)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '12px',
-                        color: 'white',
-                        fontWeight: 'bold'
-                      }}
-                    >✓</motion.span>
-                    MBA with focus on data-driven decision making
-                  </motion.li>
-                </motion.ul>
+                  <img src="/images/profile.jpeg" alt="Drew Lambert" width="220" height="220" />
+                </motion.div>
               </div>
-            </motion.div>
+              
+              <div className="profile-specialties animate delay-2">
+                <h3>Specialties</h3>
+                <div className="specialties-grid">
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                    </span>
+                    RevOps Strategy
+                  </motion.div>
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                      </svg>
+                    </span>
+                    Apex & LWC
+                  </motion.div>
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 8v4l3 3"></path>
+                      </svg>
+                    </span>
+                    Workflow Automation
+                  </motion.div>
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                    </span>
+                    API Integrations
+                  </motion.div>
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                      </svg>
+                    </span>
+                    Data Architecture
+                  </motion.div>
+                  <motion.div 
+                    className="specialty-item"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)", y: -3, boxShadow: "0 5px 15px rgba(0,0,0,0.2)", borderColor: "rgba(225, 6, 0, 0.3)" }}
+                  >
+                    <span className="specialty-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                      </svg>
+                    </span>
+                    Revenue Analytics
+                  </motion.div>
+                </div>
+              </div>
+            </div>
             
-            <motion.div
-              className="profile-right-column"
-              variants={fadeIn}
-            >
-              <h3 
-                className="secondary-heading"
-                style={{
-                  marginBottom: '1.5rem'
-                }}
-              >
-                Areas of Expertise
-              </h3>
+            {/* Right Column: Profile Info and Companies */}
+            <div className="profile-right-column">
+              <div className="profile-header animate">
+                <h1 className="profile-name">Drew Lambert</h1>
+                <p className="profile-title">Revenue Operations Expert & Salesforce Engineer</p>
+              </div>
               
-              <div 
-                className="specialties-grid"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1.5rem',
-                  marginBottom: '2.5rem'
-                }}
-              >
+              <div className="profile-companies animate delay-1">
                 <motion.div 
-                  className="specialty-item"
-                  variants={fadeIn}
-                  initial="rest"
-                  whileHover="hover"
-                  variants={cardHover}
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
+                  className="company-block"
+                  whileHover={{ boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
                 >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: '60%' }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '3px',
-                      background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                    }}
-                  />
-                  <h4 
-                    style={{
-                      color: 'white',
-                      fontSize: '1.3rem',
-                      marginBottom: '0.8rem'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ color: 'var(--racing-red)', marginRight: '6px' }}
-                      animate={{ x: [0, 2, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5, repeatType: 'reverse' }}
-                    >
-                      &#9733;
-                    </motion.span>
-                    Revenue Operations
-                  </h4>
-                  <p>
-                    Aligning sales, marketing and customer success operations for 
-                    maximum efficiency and revenue growth.
+                  <h3 className="profile-company">REVELATE OPERATIONS, LLC</h3>
+                  <p className="profile-role">Founder & Principal Consultant</p>
+                  <p className="profile-description">
+                    Drew Lambert is a Revenue Operations expert with over 7 years of experience in Salesforce and automation technologies. He specializes in designing and implementing revenue systems that enhance operational efficiency and drive measurable business growth.
                   </p>
                 </motion.div>
                 
                 <motion.div 
-                  className="specialty-item"
-                  variants={fadeIn}
-                  initial="rest"
-                  whileHover="hover"
-                  variants={cardHover}
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
+                  className="company-block"
+                  whileHover={{ boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
                 >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: '60%' }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '3px',
-                      background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                    }}
-                  />
-                  <h4 
-                    style={{
-                      color: 'white',
-                      fontSize: '1.3rem',
-                      marginBottom: '0.8rem'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ color: 'var(--racing-red)', marginRight: '6px' }}
-                      animate={{ x: [0, 2, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5, repeatType: 'reverse', delay: 0.2 }}
-                    >
-                      &#9733;
-                    </motion.span>
-                    Sales Engineering
-                  </h4>
-                  <p>
-                    Creating technical demonstrations and solutions architecture 
-                    to support complex SaaS sales.
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="specialty-item"
-                  variants={fadeIn}
-                  initial="rest"
-                  whileHover="hover"
-                  variants={cardHover}
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: '60%' }}
-                    transition={{ delay: 1.0, duration: 0.8 }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '3px',
-                      background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                    }}
-                  />
-                  <h4 
-                    style={{
-                      color: 'white',
-                      fontSize: '1.3rem',
-                      marginBottom: '0.8rem'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ color: 'var(--racing-red)', marginRight: '6px' }}
-                      animate={{ x: [0, 2, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5, repeatType: 'reverse', delay: 0.4 }}
-                    >
-                      &#9733;
-                    </motion.span>
-                    CRM Implementation
-                  </h4>
-                  <p>
-                    Salesforce customization, automation, integration and 
-                    data management for high-growth companies.
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="specialty-item"
-                  variants={fadeIn}
-                  initial="rest"
-                  whileHover="hover"
-                  variants={cardHover}
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: '60%' }}
-                    transition={{ delay: 1.1, duration: 0.8 }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '3px',
-                      background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                    }}
-                  />
-                  <h4 
-                    style={{
-                      color: 'white',
-                      fontSize: '1.3rem',
-                      marginBottom: '0.8rem'
-                    }}
-                  >
-                    <motion.span 
-                      style={{ color: 'var(--racing-red)', marginRight: '6px' }}
-                      animate={{ x: [0, 2, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5, repeatType: 'reverse', delay: 0.6 }}
-                    >
-                      &#9733;
-                    </motion.span>
-                    Sales Process Automation
-                  </h4>
-                  <p>
-                    Leveraging AI, workflow automation and integrations to 
-                    streamline sales processes and increase productivity.
+                  <h3 className="profile-company">BEVI</h3>
+                  <p className="profile-role">Senior Salesforce Engineer</p>
+                  <p className="profile-description">
+                    At Bevi, Drew leads enterprise Salesforce engineering initiatives, focusing on scaling revenue operations through intelligent automation, cross-platform data integration, and streamlined business processes.
                   </p>
                 </motion.div>
               </div>
-              
-              <motion.div
-                className="profile-philosophy"
-                variants={fadeIn}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.3, duration: 0.8 }}
-                style={{
-                  background: 'rgba(225,6,0,0.05)',
-                  padding: '1.5rem',
-                  borderRadius: '10px',
-                  border: '1px solid rgba(225,6,0,0.1)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-              >
-                <h3 className="secondary-heading">My Philosophy</h3>
-                <div 
-                  style={{ 
-                    width: '40px', 
-                    height: '40px',
-                    position: 'absolute',
-                    top: '15px',
-                    right: '15px',
-                    opacity: 0.5
-                  }}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--racing-red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </div>
-                <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
-                  Revenue operations isn't just about tools and technology—it's about 
-                  creating frictionless, integrated systems that allow sales teams to focus 
-                  on what they do best: building relationships and closing deals.
-                </p>
-                <motion.p 
-                  style={{ 
-                    fontSize: '1.2rem', 
-                    lineHeight: '1.6', 
-                    marginTop: '1rem',
-                    fontStyle: 'italic',
-                    color: 'var(--racing-red)'
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.8, duration: 0.8 }}
-                >
-                  "Great RevOps is like a perfectly tuned race car engine—it delivers 
-                  maximum power with minimum waste, precisely when and where you need it."
-                </motion.p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
+
+        <style jsx>{`
+          /* Override the slide background to match our dark theme */
+          #slide-1 {
+            background: linear-gradient(135deg, #121212, #1e1e1e, #2a2a2a);
+            color: var(--text-light);
+            position: relative;
+          }
+          
+          #slide-1:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><rect fill="rgba(225,6,0,0.03)" width="50" height="50"/><rect fill="rgba(225,6,0,0.03)" x="50" y="50" width="50" height="50"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
+          }
+          
+          #slide-1 .slide-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem 3rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+          
+          /* Redesigned layout for better space utilization */
+          .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+          }
+          
+          /* Left column: Profile image and specialties */
+          .profile-left-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .profile-image-container {
+            text-align: center;
+            margin-bottom: 2rem;
+          }
+          
+          .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 5px solid var(--racing-red);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+          }
+          
+          .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          
+          .profile-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent 50%);
+          }
+          
+          /* Right column: Profile information and descriptions */
+          .profile-right-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          
+          .profile-header {
+            margin-bottom: 1.5rem;
+          }
+          
+          .profile-name {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            color: white;
+            text-shadow: 0 2px 15px rgba(225, 6, 0, 0.4);
+            line-height: 1.1;
+          }
+          
+          .profile-name::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(225, 6, 0, 0.3);
+          }
+          
+          .profile-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+          }
+          
+          .profile-companies {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+          }
+          
+          .company-block {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            border-left: 4px solid var(--racing-red);
+          }
+          
+          .profile-company {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--racing-red);
+            text-shadow: 0 0 10px rgba(225, 6, 0, 0.3);
+            display: block;
+          }
+          
+          .profile-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: white;
+          }
+          
+          .profile-description {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+          }
+          
+          .profile-specialties {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+          }
+          
+          .profile-specialties::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.3);
+          }
+          
+          .profile-specialties h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-align: center;
+          }
+          
+          .specialties-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.8rem;
+            width: 100%;
+          }
+          
+          .specialty-item {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1rem;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+          }
+          
+          .specialty-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(225, 6, 0, 0.2);
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(225, 6, 0, 0.2);
+          }
+          
+          .specialty-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--racing-red);
+            stroke-width: 2;
+          }
+          
+          /* Media queries for responsiveness */
+          @media (max-width: 1200px) {
+            .profile-container {
+              grid-template-columns: 1fr 1.5fr;
+            }
+            
+            .specialties-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          
+          @media (max-width: 992px) {
+            .profile-container {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+            }
+            
+            .profile-left-column {
+              display: grid;
+              grid-template-columns: auto 1fr;
+              align-items: center;
+              gap: 2rem;
+            }
+            
+            .profile-image-container {
+              margin-bottom: 0;
+            }
+            
+            .profile-specialties {
+              height: 100%;
+            }
+            
+            .profile-image {
+              width: 180px;
+              height: 180px;
+            }
+          }
+          
+          @media (max-width: 768px) {
+            .profile-left-column {
+              flex-direction: column;
+              align-items: center;
+            }
+            
+            .profile-header {
+              text-align: center;
+            }
+            
+            .company-block {
+              margin-bottom: 3rem;
+              padding: 2rem;
+            }
+            
+            .profile-companies {
+              margin-bottom: 5rem;
+            }
+            
+            .profile-name {
+              font-size: 2.8rem;
+            }
+            
+            .profile-name::after {
+              width: 100%;
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+            }
+            
+            .profile-title {
+              font-size: 1.4rem;
+              text-align: center;
+            }
+            
+            .specialties-grid {
+              grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+              width: 160px;
+              height: 160px;
+            }
+            
+            #slide-1 .slide-content {
+              padding: 2rem 1.5rem;
+              padding-bottom: 500px; /* Extreme padding to ensure everything is visible */
+            }
+          }
+          
+          @media (max-width: 480px) {
+            #slide-1 .slide-content {
+              padding-bottom: 600px; /* Extreme padding for smallest screens */
+            }
+          }
+          
+          /* Animation classes */
+          .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+          }
+          
+          .active .animate {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          
+          .delay-1 {
+            transition-delay: 0.2s;
+          }
+          
+          .delay-2 {
+            transition-delay: 0.4s;
+          }
+          
+          .delay-3 {
+            transition-delay: 0.6s;
+          }
+        `}</style>
       </section>
     </Layout>
   );

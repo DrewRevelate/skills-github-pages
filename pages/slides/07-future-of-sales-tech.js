@@ -1,108 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../../components/Layout';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const cardHover = {
-  rest: { scale: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.1)" },
-  hover: { 
-    scale: 1.03, 
-    boxShadow: "0 8px 25px rgba(225,6,0,0.15)",
-    borderColor: "rgba(225,6,0,0.3)"
-  }
-};
+import { motion } from 'framer-motion';
 
 const FutureOfSalesTech = () => {
-  const [activeCard, setActiveCard] = useState(null);
-  
-  // Trends data
-  const trends = [
-    {
-      id: 'ai',
-      title: 'AI-Powered Everything',
-      description: 'Generative AI is revolutionizing sales enablement by automating content creation, conversation analysis, and providing real-time coaching during customer interactions.',
-      tags: ['Generative AI', 'Real-time Coaching'],
-      examples: 'GPT-enabled email personalization, AI meeting assistants, automated proposal generation',
-      icon: '🤖',
-      details: 'By 2026, over 80% of sales interactions will involve some form of AI assistance. Sales professionals using AI tools are already seeing 37% higher close rates and 50% more efficient prospecting.',
-      impact: 'High'
-    },
-    {
-      id: 'personalization',
-      title: 'Hyper-Personalization',
-      description: 'The shift from segment-based to individual-based engagement is enabling 1:1 personalization at scale, with dynamic content adjusted for each buyer.',
-      tags: ['Behavioral Analytics', 'Intent Data'],
-      examples: 'Dynamic content recommendations, buyer intent tools, real-time website customization',
-      icon: '🎯',
-      details: 'Companies implementing hyper-personalization strategies have seen 40% higher customer lifetime values. The technology now enables real-time content adaptation based on thousands of data points about each prospect.',
-      impact: 'Medium'
-    },
-    {
-      id: 'conversation',
-      title: 'Conversational Intelligence',
-      description: 'Advanced conversation analytics are transforming how we understand customer interactions, with real-time sentiment analysis and coaching becoming standard.',
-      tags: ['Sentiment Analysis', 'Win/Loss Insights'],
-      examples: 'Gong.io, Chorus.ai, real-time call coaching, automated meeting summaries',
-      icon: '🗣️',
-      details: 'Conversation intelligence platforms have grown 300% in adoption since 2020. Companies using these tools report 28% faster ramp times for new reps and 15% higher quota attainment.',
-      impact: 'High'
-    },
-    {
-      id: 'revenue',
-      title: 'Revenue Intelligence',
-      description: 'Unifying all customer data points to create predictive insights and identify revenue opportunities that would otherwise remain hidden.',
-      tags: ['Predictive Analytics', 'Revenue Attribution'],
-      examples: 'Revenue data platforms, predictive analytics engines, intelligent forecasting',
-      icon: '📈',
-      details: 'Revenue intelligence platforms have improved forecast accuracy by 28% for early adopters. Companies using these platforms report finding 15-20% more revenue opportunities in their existing pipeline.',
-      impact: 'Medium'
-    }
-  ];
-  
-  // Preparation steps data
-  const prepSteps = [
-    {
-      id: 'data',
-      title: 'Build a Data Foundation',
-      description: 'Clean, unified data is the fuel that powers all future sales tech. Invest in data quality, governance, and integration capabilities first.',
-      number: 1,
-      icon: '📊'
-    },
-    {
-      id: 'ai',
-      title: 'Develop AI Strategy',
-      description: 'Create a clear roadmap for AI adoption in your sales process. Start with high-value, low-complexity use cases and scale from there.',
-      number: 2,
-      icon: '🧠'
-    },
-    {
-      id: 'skills',
-      title: 'Invest in Skills Development',
-      description: 'Modern sales requires new skills. Train teams on data literacy, AI tools, and how to work alongside automation technologies.',
-      number: 3,
-      icon: '🎓'
-    }
-  ];
-
   return (
     <Layout
       title="Future of Sales Technology - Full Throttle Revenue"
@@ -111,474 +11,513 @@ const FutureOfSalesTech = () => {
       prevSlide="/slides/06-human-vs-automation"
       nextSlide="/slides/08-contact-info"
     >
-      <section className="slide active" id="future-of-sales-tech">
+      <section className="slide active" id="slide-6">
+        <div className="diagonal-divider"></div>
+        <div className="future-bg"></div>
+        <div className="pattern-overlay"></div>
+        
         <div className="slide-content">
-          <motion.div
-            className="slide-header"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-          >
-            <h2>The <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              style={{ color: 'var(--racing-red)' }}
-            >Future</motion.span> of Sales Technology</h2>
-            <div className="slide-subtitle">Emerging Trends Reshaping Revenue Operations</div>
-          </motion.div>
+          <div className="slide-header">
+            <h2 className="animate">THE <span>FUTURE</span> OF SALES TECH</h2>
+            <p className="slide-subtitle animate delay-1">What's next in the world of revenue acceleration</p>
+          </div>
           
-          <motion.div
-            className="future-container"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{
-              marginTop: '2rem'
-            }}
-          >
-            <motion.div
-              className="future-intro"
-              variants={fadeIn}
-              style={{
-                textAlign: 'center',
-                marginBottom: '2rem'
-              }}
-            >
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                style={{
-                  fontSize: '1.2rem',
-                  maxWidth: '900px',
-                  margin: '0 auto',
-                  lineHeight: '1.6'
-                }}
-              >
-                The next generation of sales technology is set to dramatically transform how 
-                revenue teams operate — creating new possibilities and challenges for businesses.
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                style={{
-                  margin: '1.5rem auto',
-                  padding: '0.8rem 1.5rem',
-                  background: 'rgba(225,6,0,0.1)',
-                  borderRadius: '30px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  border: '1px solid rgba(225,6,0,0.2)'
-                }}
-              >
-                <span style={{ fontSize: '1.2rem' }}>🚀</span>
-                <span style={{ fontWeight: '600' }}>Click on any trend card for more details</span>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div
-              className="trends-grid"
-              variants={staggerContainer}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '2rem',
-                marginBottom: '2rem'
-              }}
-            >
-              {/* Map through trends to create cards */}
-              {trends.map((trend, index) => (
-                <motion.div
-                  key={trend.id}
-                  className={`trend-card ${activeCard === trend.id ? 'active' : ''}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + (index * 0.1), duration: 0.6 }}
-                  whileHover={activeCard === null ? { scale: 1.02 } : {}}
-                  onClick={() => setActiveCard(activeCard === trend.id ? null : trend.id)}
-                  style={{
-                    background: activeCard === trend.id ? 'rgba(225,6,0,0.1)' : 'rgba(255,255,255,0.05)',
-                    padding: '2rem',
-                    borderRadius: '12px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: activeCard === trend.id ? '1px solid rgba(225,6,0,0.3)' : '1px solid rgba(255,255,255,0.1)',
-                    height: '100%',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: activeCard === trend.id ? '100%' : '60%' }}
-                    transition={{ delay: 0.5 + (index * 0.1), duration: 0.8 }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '4px',
-                      background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                    }}
-                  />
-                  
-                  {activeCard === trend.id && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ 
-                        position: 'absolute',
-                        top: '10px',
-                        right: '10px',
-                        background: 'var(--racing-red)',
-                        color: 'white',
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold',
-                        padding: '3px 8px',
-                        borderRadius: '20px'
-                      }}
-                    >
-                      IMPACT: {trend.impact}
-                    </motion.div>
-                  )}
-                  
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '1rem' }}>
-                    <motion.div
-                      animate={{ 
-                        rotate: trend.id === 'ai' ? [0, 5, 0, -5, 0] : 0,
-                        scale: trend.id === 'personalization' ? [1, 1.1, 1] : 1,
-                        y: trend.id === 'revenue' ? [0, -3, 0] : 0
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      style={{ fontSize: '2rem', lineHeight: 1 }}
-                    >
-                      {trend.icon}
-                    </motion.div>
-                    <h3
-                      style={{
-                        fontSize: '1.5rem',
-                        color: 'white',
-                        marginBottom: '0.5rem'
-                      }}
-                    >
-                      {trend.title}
-                    </h3>
-                  </div>
-                  
-                  <p style={{ marginBottom: '1.5rem' }}>
-                    {trend.description}
-                  </p>
-                  
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '1rem',
-                      marginBottom: '1.5rem',
-                      flexWrap: 'wrap'
-                    }}
-                  >
-                    {trend.tags.map((tag, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.6 + (index * 0.1) + (i * 0.1), duration: 0.5 }}
-                        style={{
-                          background: 'rgba(0,0,0,0.2)',
-                          padding: '0.5rem 1rem',
-                          borderRadius: '30px',
-                          fontSize: '0.9rem'
-                        }}
-                      >
-                        {tag}
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  <AnimatePresence>
-                    {activeCard === trend.id && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        style={{
-                          overflow: 'hidden',
-                          marginBottom: '1rem',
-                          background: 'rgba(255,255,255,0.05)',
-                          padding: '1rem',
-                          borderRadius: '8px',
-                          border: '1px solid rgba(255,255,255,0.1)'
-                        }}
-                      >
-                        <p style={{ fontStyle: 'italic', marginBottom: '0' }}>
-                          {trend.details}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  
-                  <div
-                    className="trend-examples"
-                    style={{
-                      background: 'rgba(0,0,0,0.2)',
-                      padding: '1rem',
-                      borderRadius: '8px',
-                      fontSize: '0.9rem'
-                    }}
-                  >
-                    <strong style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--racing-silver)' }}>
-                      Examples:
-                    </strong>
-                    <p>{trend.examples}</p>
-                  </div>
-                  
-                  {activeCard === null && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1 + (index * 0.1), duration: 0.5 }}
-                      style={{
-                        position: 'absolute',
-                        bottom: '10px',
-                        right: '10px',
-                        color: 'var(--racing-red)',
-                        fontSize: '0.8rem',
-                        fontStyle: 'italic'
-                      }}
-                    >
-                      Click for details
-                    </motion.div>
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-            
-            <motion.div
-              className="preparation-section"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              style={{
-                marginTop: '2.5rem'
-              }}
-            >
-              <motion.h3
-                className="secondary-heading"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.3, duration: 0.5 }}
-                style={{
-                  marginBottom: '1.5rem',
-                  textAlign: 'center'
-                }}
-              >
-                How to Prepare for the Future
-              </motion.h3>
-              
-              <div
-                className="preparation-grid"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  gap: '1.5rem',
-                  maxWidth: '1000px',
-                  margin: '0 auto'
-                }}
-              >
-                {prepSteps.map((step, index) => (
-                  <motion.div
-                    key={step.id}
-                    className="preparation-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.4 + (index * 0.1), duration: 0.5 }}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
-                      borderColor: 'rgba(225,6,0,0.2)'
-                    }}
-                    style={{
-                      background: 'rgba(255,255,255,0.05)',
-                      padding: '1.5rem',
-                      borderRadius: '12px',
-                      boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      height: '100%',
-                      position: 'relative',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '15px',
-                        marginBottom: '1rem'
-                      }}
-                    >
-                      <motion.div
-                        className="step-number"
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 1.5 + (index * 0.1), duration: 0.5, type: 'spring' }}
-                        style={{
-                          width: '40px',
-                          height: '40px',
-                          borderRadius: '50%',
-                          background: 'var(--racing-red)',
-                          color: 'white',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          fontWeight: '700',
-                          fontSize: '1.2rem',
-                          flexShrink: 0
-                        }}
-                      >
-                        {step.number}
-                      </motion.div>
-                      
-                      <h4
-                        style={{
-                          fontSize: '1.2rem',
-                          color: 'white',
-                          marginBottom: '0',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px'
-                        }}
-                      >
-                        {step.title}
-                        <motion.span
-                          animate={{ rotate: 0, scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                        >
-                          {step.icon}
-                        </motion.span>
-                      </h4>
-                    </div>
-                    
-                    <p>
-                      {step.description}
-                    </p>
-                    
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: '60%' }}
-                      transition={{ delay: 1.6 + (index * 0.1), duration: 0.8 }}
-                      style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        height: '3px',
-                        background: 'linear-gradient(90deg, var(--racing-red), transparent)',
-                      }}
-                    />
-                  </motion.div>
-                ))}
+          <div className="future-trends animate delay-2">
+            <div className="trend-item">
+              <div className="trend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
               </div>
-            </motion.div>
+              <div className="trend-content">
+                <h4>AI-Powered Messaging</h4>
+                <p>By 2025, 30% of outbound messages from large organizations will be synthetically generated, according to Gartner research.</p>
+              </div>
+            </div>
             
-            <motion.div
-              className="quote-section"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.7, duration: 0.8 }}
-              style={{
-                marginTop: '3rem',
-                textAlign: 'center'
-              }}
-            >
-              <motion.div
-                className="closing-quote"
-                whileHover={{ scale: 1.02, boxShadow: '0 15px 35px rgba(0,0,0,0.15)' }}
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  padding: '2rem',
-                  borderRadius: '12px',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  maxWidth: '800px',
-                  margin: '0 auto',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-              >
-                <motion.div
-                  initial={{ left: '-50%' }}
-                  animate={{ left: '150%' }}
-                  transition={{ 
-                    delay: 2, 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    repeatDelay: 5 
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '50%',
-                    height: '100%',
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                    transform: 'skewX(-15deg)',
-                    pointerEvents: 'none'
-                  }}
-                />
-                
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.8, duration: 0.5 }}
-                  style={{
-                    position: 'absolute',
-                    top: '20px',
-                    left: '20px',
-                    fontSize: '3rem',
-                    color: 'var(--racing-red)',
-                    opacity: 0.2,
-                    transform: 'rotate(-10deg)'
-                  }}
-                >
-                  "
-                </motion.div>
-                
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.9, duration: 0.6 }}
-                  style={{
-                    fontSize: '1.4rem',
-                    color: 'var(--racing-red)',
-                    fontStyle: 'italic',
-                    lineHeight: '1.6',
-                    marginBottom: '1rem'
-                  }}
-                >
-                  "The future of sales isn't about replacing humans with technology, but 
-                  elevating humans with technology."
-                </motion.p>
-                
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 2.0, duration: 0.6 }}
-                  style={{
-                    fontSize: '1rem'
-                  }}
-                >
-                  The most successful companies will find the perfect balance between digital 
-                  transformation and the irreplaceable human element.
-                </motion.p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+            <div className="trend-item">
+              <div className="trend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
+              </div>
+              <div className="trend-content">
+                <h4>Immersive Sales Interfaces</h4>
+                <p>The AR & VR market is projected to grow by 7.42% annually (2025-2029), reaching $62 billion globally by 2029, transforming B2B sales demonstrations.</p>
+              </div>
+            </div>
+            
+            <div className="trend-item">
+              <div className="trend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <line x1="10" y1="9" x2="8" y2="9"></line>
+                </svg>
+              </div>
+              <div className="trend-content">
+                <h4>Predictive Deal Intelligence</h4>
+                <p>According to Salesforce, 62% of high-performing sales teams are already using AI to improve their sales forecasting accuracy and effectiveness.</p>
+              </div>
+            </div>
+            
+            <div className="trend-item">
+              <div className="trend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 20h10M10 20c0-4.4 0-8.8 1-12h1c1 3.2 1 7.6 1 12"></path>
+                  <path d="M8 4v4h7"></path>
+                  <rect x="2" y="6" width="5" height="8" rx="1"></rect>
+                  <path d="M17 6v8a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1Z"></path>
+                </svg>
+              </div>
+              <div className="trend-content">
+                <h4>Autonomous Relationship Management</h4>
+                <p>Advanced systems will autonomously nurture relationships by delivering perfectly timed, relevant touchpoints.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="content-grid animate delay-3">
+            <div className="future-card">
+              <h3>Future-Ready Skills</h3>
+              <ul className="racing-list">
+                <li><strong>AI Collaboration:</strong> Working alongside AI to enhance your capabilities rather than competing</li>
+                <li><strong>Data Literacy:</strong> Understanding how to interpret and leverage insights from complex datasets</li>
+                <li><strong>Ethical Tech Usage:</strong> Balancing automation with humanity and privacy considerations</li>
+                <li><strong>Adaptable Learning:</strong> Developing the ability to quickly master new tools and platforms</li>
+                <li><strong>Strategic Consultative Selling:</strong> Adding value beyond what automation can provide</li>
+              </ul>
+            </div>
+            
+            <div className="future-card">
+              <h3>Career Acceleration Roadmap</h3>
+              <ul className="racing-list">
+                <li><strong>Revenue Operations:</strong> The fastest growing career path at the intersection of sales, marketing and customer success</li>
+                <li><strong>Sales AI Specialist:</strong> Emerging roles focused on optimizing sales tech stacks</li>
+                <li><strong>Free Learning Resources:</strong> Salesforce Trailhead, HubSpot Academy, Google Analytics certification</li>
+                <li><strong>Look for:</strong> Companies investing heavily in modern sales tech as accelerators for your career</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h3 className="secondary-heading animate delay-3">Essential Takeaways</h3>
+          
+          <div className="animate delay-4">
+            <div className="future-numbered-card">
+              <div className="future-number">1</div>
+              <div className="card-content">
+                <h3>RevOps and automation are redefining what's possible</h3>
+                <p>Companies that embrace these approaches are growing revenue 3× faster and enabling their teams to focus on high-impact work</p>
+              </div>
+            </div>
+            
+            <div className="future-numbered-card">
+              <div className="future-number">2</div>
+              <div className="card-content">
+                <h3>Technology must augment, not replace, humanity</h3>
+                <p>The most successful implementations balance automation with authentic human connection and ethical considerations</p>
+              </div>
+            </div>
+            
+            <div className="future-numbered-card">
+              <div className="future-number">3</div>
+              <div className="card-content">
+                <h3>Adaptability is your competitive advantage</h3>
+                <p>The ability to quickly master new tools and approaches will separate those who thrive from those who merely survive</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="future-quote animate delay-4">
+            <p className="quote-text">"As we encounter more and more artificial intelligence, real intelligence, real empathy, and real common sense will be scarce. Humans will add value where machines cannot."</p>
+            <p className="quote-author">— Satya Nadella, CEO of Microsoft</p>
+          </div>
         </div>
+        
+        <style jsx>{`
+          /* Base Slide Styling */
+          #slide-6 {
+              background: linear-gradient(135deg, #121212, #1e1e1e, #2a2a2a);
+              overflow: hidden;
+              position: relative;
+              color: white;
+          }
+          
+          #slide-6:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><rect fill="rgba(225,6,0,0.03)" width="50" height="50"/><rect fill="rgba(225,6,0,0.03)" x="50" y="50" width="50" height="50"/></svg>');
+              opacity: 0.5;
+              z-index: 0;
+          }
+          
+          #slide-6 .slide-content {
+              position: relative;
+              z-index: 2;
+              color: white;
+              padding-bottom: 60px;
+          }
+          
+          /* Background effects */
+          .future-bg {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: radial-gradient(ellipse at top right, rgba(225, 6, 0, 0.15), transparent 70%),
+                          radial-gradient(ellipse at bottom left, rgba(255, 218, 10, 0.08), transparent 70%);
+              z-index: 1;
+              pointer-events: none;
+          }
+          
+          /* Static pattern overlay */
+          .pattern-overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E10600' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+              z-index: 1;
+              opacity: 0.3;
+              pointer-events: none;
+          }
+          
+          /* Future trends icon grid */
+          .future-trends {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1.5rem;
+              margin: 2rem 0;
+          }
+          
+          .trend-item {
+              display: flex;
+              background: rgba(0, 0, 0, 0.2);
+              border-radius: 12px;
+              padding: 1.2rem;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              position: relative;
+              overflow: hidden;
+          }
+          
+          .trend-item:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+              border-color: rgba(225, 6, 0, 0.3);
+          }
+          
+          .trend-item::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 3px;
+              height: 100%;
+              background: linear-gradient(to bottom, var(--racing-red), var(--accent-yellow));
+          }
+          
+          .trend-icon {
+              margin-right: 1rem;
+              display: flex;
+              flex-shrink: 0;
+              align-items: center;
+              justify-content: center;
+              width: 60px;
+              height: 60px;
+              border-radius: 12px;
+              background: rgba(225, 6, 0, 0.1);
+              padding: 0.8rem;
+              transition: transform 0.3s ease;
+          }
+          
+          .trend-item:hover .trend-icon {
+              transform: scale(1.05);
+          }
+          
+          .trend-icon svg {
+              width: 100%;
+              height: 100%;
+              stroke: var(--racing-red);
+              stroke-width: 1.5;
+          }
+          
+          .trend-content {
+              flex: 1;
+          }
+          
+          .trend-content h4 {
+              margin: 0 0 0.4rem 0;
+              color: var(--racing-red);
+              font-size: 1.15rem;
+              font-weight: 700;
+          }
+          
+          .trend-content p {
+              margin: 0;
+              font-size: 0.95rem;
+              color: rgba(255, 255, 255, 0.9);
+              line-height: 1.5;
+          }
+          
+          /* Advanced cards styling */
+          .future-card {
+              position: relative;
+              background: rgba(0, 0, 0, 0.2);
+              border-radius: 16px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+              overflow: hidden;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              padding: 1.8rem;
+              margin-bottom: 1.5rem;
+              height: 100%;
+          }
+          
+          .future-card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+              border-color: rgba(225, 6, 0, 0.3);
+          }
+          
+          .future-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 5px;
+              background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+          }
+          
+          .future-card h3 {
+              color: var(--racing-red);
+              margin-bottom: 1.2rem;
+              position: relative;
+              display: inline-block;
+              font-size: 1.5rem;
+              font-weight: 700;
+          }
+          
+          .future-card h3::after {
+              content: '';
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              width: 60px;
+              height: 2px;
+              background: linear-gradient(90deg, var(--racing-red), var(--accent-yellow));
+          }
+          
+          /* Racing list improvements */
+          .racing-list {
+              list-style: none;
+              padding-left: 0;
+              margin: 0;
+          }
+          
+          .racing-list li {
+              position: relative;
+              padding-left: 1.8rem;
+              margin-bottom: 1rem;
+              color: rgba(255, 255, 255, 0.9);
+              line-height: 1.5;
+              font-size: 1.05rem;
+          }
+          
+          .racing-list li::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0.5rem;
+              width: 8px;
+              height: 8px;
+              background: var(--racing-red);
+              border-radius: 2px;
+              transform: rotate(45deg);
+          }
+          
+          .racing-list li strong {
+              color: white;
+              font-weight: 700;
+          }
+          
+          /* Numbered cards with advanced styling */
+          .future-numbered-card {
+              position: relative;
+              background: rgba(0, 0, 0, 0.2);
+              border-radius: 16px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+              overflow: hidden;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              padding: 1.5rem 1.5rem 1.5rem 5rem;
+              margin-bottom: 1.5rem;
+          }
+          
+          .future-numbered-card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+              border-color: rgba(225, 6, 0, 0.3);
+          }
+          
+          .future-number {
+              position: absolute;
+              left: 1.5rem;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(135deg, var(--racing-red), var(--accent-yellow));
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 900;
+              font-size: 1.5rem;
+              box-shadow: 0 5px 15px rgba(225, 6, 0, 0.3);
+          }
+          
+          .future-numbered-card h3 {
+              margin-top: 0;
+              margin-bottom: 0.6rem;
+              color: white;
+              font-weight: 700;
+              font-size: 1.3rem;
+          }
+          
+          .future-numbered-card p {
+              margin: 0;
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 1rem;
+              line-height: 1.5;
+          }
+          
+          /* Advanced quote card */
+          .future-quote {
+              position: relative;
+              border-radius: 16px;
+              background: rgba(0, 0, 0, 0.2);
+              padding: 2.5rem;
+              text-align: center;
+              margin: 3rem 0 1rem;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              overflow: hidden;
+          }
+          
+          .future-quote::before,
+          .future-quote::after {
+              content: '"';
+              position: absolute;
+              font-size: 8rem;
+              font-family: Georgia, serif;
+              line-height: 1;
+              color: rgba(225, 6, 0, 0.1);
+          }
+          
+          .future-quote::before {
+              top: -1rem;
+              left: 1rem;
+          }
+          
+          .future-quote::after {
+              bottom: -5rem;
+              right: 1rem;
+          }
+          
+          .future-quote .quote-text {
+              position: relative;
+              font-size: 1.7rem;
+              font-weight: 700;
+              line-height: 1.4;
+              color: white;
+              font-style: italic;
+              z-index: 2;
+          }
+          
+          .quote-author {
+              margin-top: 1.5rem;
+              font-size: 1rem;
+              color: rgba(255, 255, 255, 0.8);
+              font-weight: 600;
+          }
+          
+          /* Content grid */
+          .content-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.8rem;
+          }
+          
+          /* Mobile optimizations */
+          @media (max-width: 768px) {
+              #slide-6 .slide-content {
+                  padding-bottom: 80px;
+                  min-height: auto;
+              }
+              
+              .slide-header {
+                  padding: 1.5rem 0 1rem;
+              }
+              
+              .slide-title {
+                  font-size: 2.2rem;
+              }
+              
+              /* Stack cards vertically on mobile */
+              .future-trends {
+                  grid-template-columns: 1fr;
+                  gap: 1.5rem;
+              }
+              
+              /* Force content grid to single column on mobile */
+              .content-grid {
+                  grid-template-columns: 1fr !important;
+                  gap: 2rem;
+              }
+              
+              /* Reduce spacing for mobile */
+              .future-quote {
+                  margin: 1rem 0;
+              }
+              
+              /* Improve readability */
+              .future-card {
+                  padding: 1.5rem;
+              }
+              
+              .future-card h3 {
+                  font-size: 1.4rem;
+              }
+              
+              .racing-list li {
+                  font-size: 1rem;
+                  line-height: 1.4;
+              }
+          }
+        `}</style>
       </section>
     </Layout>
   );
