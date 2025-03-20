@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PollComponent from '../../components/PollComponent';
 import Layout from '../../components/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -666,89 +667,22 @@ const RevenueAcceleration = () => {
                 </motion.div>
                 
                 <motion.div
-                  className="interactive-poll-element"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '1.5rem',
-                    borderRadius: '10px',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    marginTop: '2rem'
-                  }}
+                  style={{ marginTop: '2rem' }}
                 >
-                  <h3 
-                    style={{
-                      marginBottom: '1rem',
-                      fontSize: '1.5rem',
-                      color: 'white',
-                      textAlign: 'center'
-                    }}
-                  >
-                    Real Business Impact of RevOps
-                  </h3>
-                  
-                  <div 
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr 1fr',
-                      gap: '1.2rem',
-                      marginTop: '1.5rem'
-                    }}
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        background: 'rgba(255,255,255,0.03)',
-                        padding: '1.2rem',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        textAlign: 'center'
-                      }}
-                    >
-                      <div style={{ fontSize: '2.8rem', marginBottom: '0.5rem', color: 'var(--racing-red)' }}>
-                        <span style={{ fontSize: '1.2rem', position: 'relative', top: '-10px' }}>+</span>38%
-                      </div>
-                      <p style={{ fontSize: '0.95rem' }}>Customer Retention Rate</p>
-                    </motion.div>
-                    
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        background: 'rgba(255,255,255,0.03)',
-                        padding: '1.2rem',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        textAlign: 'center'
-                      }}
-                    >
-                      <div style={{ fontSize: '2.8rem', marginBottom: '0.5rem', color: 'var(--racing-red)' }}>
-                        67%
-                      </div>
-                      <p style={{ fontSize: '0.95rem' }}>Higher Win Rates</p>
-                    </motion.div>
-                    
-                    <motion.div
-                      whileHover={{ scale: 1.03 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        background: 'rgba(255,255,255,0.03)',
-                        padding: '1.2rem',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        textAlign: 'center'
-                      }}
-                    >
-                      <div style={{ fontSize: '2.8rem', marginBottom: '0.5rem', color: 'var(--racing-red)' }}>
-                        <span style={{ fontSize: '1.2rem', position: 'relative', top: '-10px' }}>-</span>21%
-                      </div>
-                      <p style={{ fontSize: '0.95rem' }}>Shorter Sales Cycles</p>
-                    </motion.div>
-                  </div>
+                  <PollComponent 
+                    pollId="revops-impact"
+                    question="Which RevOps benefit would impact your business the most?"
+                    options={[
+                      { id: 'productivity', text: 'Increased Sales Productivity' },
+                      { id: 'forecasting', text: 'More Accurate Forecasting' },
+                      { id: 'retention', text: 'Higher Customer Retention' },
+                      { id: 'sales-cycle', text: 'Shorter Sales Cycles' },
+                      { id: 'expenses', text: 'Reduced Go-to-Market Expenses' }
+                    ]}
+                  />
                 </motion.div>
               </motion.div>
             )}

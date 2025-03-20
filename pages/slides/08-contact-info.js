@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ContactForm from '../../components/ContactForm';
 import Layout from '../../components/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -297,6 +298,21 @@ const ContactInfo = () => {
                   </AnimatePresence>
                 </motion.a>
               ))}
+            </motion.div>
+            
+            <motion.div
+              className="contact-form-section"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              style={{
+                width: '100%',
+                maxWidth: '800px',
+                marginTop: '2rem',
+                marginBottom: '3rem'
+              }}
+            >
+              <ContactForm />
             </motion.div>
             
             <motion.div
