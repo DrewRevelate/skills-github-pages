@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/Kl_xC4fl9hEuU2ZHvzyZ0/_buildManifest.js",
-    "static/Kl_xC4fl9hEuU2ZHvzyZ0/_ssgManifest.js"
+    "static/lpa0osqVXZ_Ho3xBu8y1j/_buildManifest.js",
+    "static/lpa0osqVXZ_Ho3xBu8y1j/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -14,7 +14,7 @@
       "static/chunks/webpack-ee7e63bc15b31913.js",
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
-      "static/chunks/pages/index-cb781b845738e5ab.js"
+      "static/chunks/pages/index-05e4f6c74aec3636.js"
     ],
     "/404": [
       "static/chunks/webpack-ee7e63bc15b31913.js",
@@ -42,7 +42,7 @@
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
       "static/chunks/571-d08f6748d3998f9a.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/01-introduction-42018879f3b8e11b.js"
     ],
     "/slides/02-presenter-profile": [
@@ -50,7 +50,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/02-presenter-profile-1b09c47929d3e63c.js"
     ],
     "/slides/03-revenue-acceleration": [
@@ -58,7 +58,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/03-revenue-acceleration-9861923b797af1e6.js"
     ],
     "/slides/04-sales-tech-evolution": [
@@ -66,7 +66,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/04-sales-tech-evolution-33009bda4d770a50.js"
     ],
     "/slides/05-automation-solutions": [
@@ -74,7 +74,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/05-automation-solutions-36d8d88618de2fa6.js"
     ],
     "/slides/06-human-vs-automation": [
@@ -82,7 +82,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/06-human-vs-automation-2a206ad7800c896f.js"
     ],
     "/slides/07-future-of-sales-tech": [
@@ -90,7 +90,7 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
+      "static/chunks/265-cf115321fc036411.js",
       "static/chunks/pages/slides/07-future-of-sales-tech-40a8b4a38674c8a2.js"
     ],
     "/slides/08-contact-info": [
@@ -98,8 +98,8 @@
       "static/chunks/framework-64ad27b21261a9ce.js",
       "static/chunks/main-9316758304a0b819.js",
       "static/chunks/664-d254d21a6fe56bff.js",
-      "static/chunks/265-a24f664234cf88f1.js",
-      "static/chunks/pages/slides/08-contact-info-72753006e01ddca9.js"
+      "static/chunks/265-cf115321fc036411.js",
+      "static/chunks/pages/slides/08-contact-info-429064bf805a6358.js"
     ]
   },
   "ampFirstPages": []

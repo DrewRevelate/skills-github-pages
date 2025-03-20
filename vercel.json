@@ -1,15 +1,20 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "out",
-  "framework": null,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "github": {
+    "enabled": true,
+    "silent": false,
+    "autoJobCancelation": true,
+    "deploymentEnabled": {
+      "main": true,
+      "gh-pages": false
+    }
+  },
   "cleanUrls": true,
   "trailingSlash": true,
-  "github": {
-    "silent": true
-  },
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/404.html" }
-  ]
+  "env": {
+    "NEXT_PUBLIC_MOCK_SUPABASE": "true"
+  }
 }

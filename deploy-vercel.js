@@ -12,13 +12,29 @@ function deployToVercel() {
       execSync('npm i -g vercel', { stdio: 'inherit' });
     }
     
-    // Build the project first
-    console.log('Building project...');
-    execSync('npm run build', { stdio: 'inherit' });
+    // Add all files to git first to ensure Vercel gets everything
+    console.log('Adding files to git...');
+    execSync('git add .', { stdio: 'inherit' });
     
-    // Deploy the out directory
+    // Commit changes if any
+    try {
+      console.log('Committing changes...');
+      execSync('git commit -m "Update for Vercel deployment"', { stdio: 'inherit' });
+    } catch (err) {
+      console.log('No changes to commit or commit failed. Continuing...');
+    }
+
+    // Push to main branch
+    try {
+      console.log('Pushing to main branch...');
+      execSync('git push origin main', { stdio: 'inherit' });
+    } catch (err) {
+      console.log('Push failed, continuing with deployment anyway...');
+    }
+    
+    // Deploy directly to Vercel
     console.log('Deploying to Vercel production...');
-    execSync('vercel deploy --prebuilt --prod', { stdio: 'inherit' });
+    execSync('vercel --prod', { stdio: 'inherit' });
     
     console.log('\nDeployment to Vercel completed!');
     console.log('You may need to set up a custom domain in the Vercel dashboard.');

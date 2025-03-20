@@ -38,9 +38,17 @@ The presentation will be available at your custom domain or https://username.git
 
 For Vercel deployment:
 
+1. Make sure the Vercel CLI is installed:
+```bash
+npm i -g vercel
+```
+
+2. Run the deployment script:
 ```bash
 npm run deploy:vercel
 ```
+
+Alternatively, you can deploy via the Vercel dashboard by connecting your GitHub repository and selecting the **main branch** (not gh-pages).
 
 ### Local Development
 

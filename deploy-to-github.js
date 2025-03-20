@@ -81,13 +81,15 @@ function deployToGitHub() {
       }
     });
     
-    // Push source code to main branch as well
+    // Push source code to main branch
     console.log(`Pushing source code to ${branch} branch on GitHub...`);
     try {
-      execSync(`git push -f origin ${branch}`, { stdio: 'inherit' });
+      // We need to make sure we push ALL files to main, not just the build output
+      execSync(`git push -f origin ${branch}:${branch}`, { stdio: 'inherit' });
+      console.log('Source code pushed to main branch successfully');
     } catch (err) {
       console.error('Push failed, trying to set upstream branch...');
-      execSync(`git push -f -u origin ${branch}`, { stdio: 'inherit' });
+      execSync(`git push -f -u origin ${branch}:${branch}`, { stdio: 'inherit' });
     }
     
   } catch (error) {
