@@ -16,8 +16,6 @@ const nextConfig = {
     NEXT_PUBLIC_MOCK_SUPABASE: 'true',
   },
   // Disable source maps in production
-  productionBrowserSourceMaps: false,
-  // Don't specify distDir when using output: 'export'
-
-
+  productionBrowserSourceMaps: false
+}
 module.exports = nextConfig
