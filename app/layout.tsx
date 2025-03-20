@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
 import { Titillium_Web } from 'next/font/google';
 import './globals.css';
+import { metadata } from './metadata';
 
 const titilliumWeb = Titillium_Web({
   weight: ['300', '400', '600', '700', '900'],
@@ -9,13 +9,7 @@ const titilliumWeb = Titillium_Web({
   variable: '--font-titillium-web',
 });
 
-export const metadata: Metadata = {
-  title: 'Full Throttle Revenue: How RevOps & Automation Drive Success',
-  description: 'Interactive presentation on Revenue Operations and Automation for undergraduate business students',
-  authors: [{ name: 'Drew Lambert' }],
-  viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
-  themeColor: '#121212',
-};
+export { metadata };
 
 export default function RootLayout({
   children,
@@ -24,6 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={titilliumWeb.variable}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <meta name="theme-color" content="#E10600" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </head>
       <body>
         {children}
       </body>

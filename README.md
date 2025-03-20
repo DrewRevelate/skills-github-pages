@@ -4,24 +4,39 @@ An interactive, F1 racing-themed presentation on Revenue Operations (RevOps) and
 
 ## Overview
 
-This presentation is designed for a 40-minute talk about Revenue Operations and Sales Engineering. The design is inspired by Formula 1 racing aesthetics with dynamic transitions, responsive layouts, and interactive elements.
+This presentation is designed for a 40-minute talk about Revenue Operations and Sales Engineering for the Industry Days event at Manning School of Business, University of Massachusetts Lowell. The design is inspired by Formula 1 racing aesthetics with dynamic transitions, responsive layouts, and interactive elements.
 
 ### Key Features
 
-- Modern, responsive design that works on all devices
-- F1 racing-inspired visual style
-- Dynamic slide transitions
-- Interactive polling system for audience engagement
-- Keyboard and touch navigation
-- SEO-friendly with proper metadata
+- **Modern, responsive design** that works on all devices from desktop to mobile
+- **F1 racing-inspired visual style** with dynamic animations and transitions
+- **Interactive elements** including polls and animated visualizations
+- **Keyboard and touch navigation** for intuitive control
+- **Progressive web app capabilities** for improved performance
+- **SEO and accessibility** optimizations
 
 ## Tech Stack
 
-- **Next.js 14** with App Router
-- **React 18**
-- **TypeScript**
-- **CSS-in-JS** using styled-jsx
-- **Responsive Design** for all screen sizes
+- **Next.js 14** with App Router for modern, efficient rendering
+- **React 18** for interactive UI components
+- **TypeScript** for type safety and better developer experience
+- **CSS-in-JS** using styled-jsx for component-scoped styling
+- **Optimized Images** with Next.js Image component and SVG fallbacks
+- **Responsive Design** for all screen sizes from desktop to mobile
+- **GitHub & Vercel** deployment pipeline for continuous integration
+
+## Presentation Structure
+
+The presentation consists of 8 slides:
+
+1. **Introduction** - Title slide with presenter information
+2. **Presenter Profile** - Background and expertise of the presenter
+3. **Revenue Acceleration** - Introduction to RevOps concepts
+4. **Sales Tech Evolution** - Timeline of sales technology development
+5. **Automation Solutions** - Key automation tools and approaches
+6. **Human vs Automation** - Finding the right balance
+7. **Future of Sales Tech** - Emerging trends and career opportunities
+8. **Contact Information** - How to get in touch
 
 ## Getting Started
 
@@ -56,18 +71,22 @@ yarn dev
 
 ## Deployment
 
-This project can be easily deployed to Vercel:
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+Quick deployment with Vercel:
 
 1. Push to GitHub repository
 2. Connect to Vercel
-3. Deploy
+3. Deploy with default settings
+
+The presentation will be available at a URL like: `https://revops-presentation.vercel.app`
 
 ## Project Structure
 
 - `/app` - Main application code (Next.js App Router)
   - `/components` - Reusable UI components
   - `/slides` - Individual presentation slides
-  - `/loading` - Loading screen
+  - `/utils` - Utility functions and helpers
   - `/api` - API routes (if needed)
 - `/public` - Static assets (images, etc.)
 
@@ -75,9 +94,26 @@ This project can be easily deployed to Vercel:
 
 You can customize the presentation by:
 
-1. Modifying the slides in the `/app/slides` directory
+1. Modifying the slides in the `/app/slides` directory and their corresponding component files
 2. Updating styles in the components' styled-jsx sections
 3. Replacing images in the `/public/images` directory
+
+## Responsive Design
+
+The presentation is designed to work on all screen sizes:
+
+- **Desktop**: Full-featured experience with keyboard navigation
+- **Tablet**: Touch-optimized with adjusted layout
+- **Mobile**: Fully responsive with touch swipe navigation and mobile-friendly text sizes
+
+## Browser Compatibility
+
+The presentation works in all modern browsers:
+
+- Chrome (recommended for best performance)
+- Firefox
+- Safari
+- Edge
 
 ## License
 
