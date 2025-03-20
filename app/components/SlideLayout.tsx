@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import SlideNavigation from './SlideNavigation';
 import KeyboardNavigation from './KeyboardNavigation';
+import Script from 'next/script';
 
 interface SlideLayoutProps {
   children: React.ReactNode;
@@ -37,6 +38,35 @@ const SlideLayout: React.FC<SlideLayoutProps> = ({
           (element as HTMLElement).style.transform = 'translateY(0)';
         }, 100 * index);
       });
+      
+      // Add race-in animation class to elements
+      document.querySelectorAll('.racing-stripes .stripe').forEach((stripe, i) => {
+        stripe.classList.add('animate', 'race');
+        (stripe as HTMLElement).style.animationDelay = `${0.1 * i}s`;
+      });
+      
+      // Add bounce animation to presenter image
+      const presenterImage = document.querySelector('.presenter-image');
+      if (presenterImage) {
+        presenterImage.classList.add('animate', 'bounce');
+        (presenterImage as HTMLElement).style.animationDelay = '0.8s';
+      }
+      
+      // Check if we're on a mobile device
+      const isMobile = window.innerWidth <= 768 || 
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Apply mobile-specific enhancements
+      if (isMobile) {
+        document.body.classList.add('mobile-device');
+        
+        // Make nav buttons more prominent on mobile
+        const navButtons = document.querySelectorAll('.nav-button');
+        navButtons.forEach(btn => {
+          (btn as HTMLElement).style.width = '65px';
+          (btn as HTMLElement).style.height = '65px';
+        });
+      }
     }, 200);
   }, []);
 
@@ -57,6 +87,8 @@ const SlideLayout: React.FC<SlideLayoutProps> = ({
         prevLink={prevLink}
         nextLink={nextLink}
       />
+      
+      <Script src="/mobile-touch.js" strategy="afterInteractive" />
     </div>
   );
 };

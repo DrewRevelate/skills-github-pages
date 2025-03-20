@@ -1,10 +1,53 @@
 "use client";
 
 import Image from 'next/image';
+import { useEffect } from 'react';
 import SlideLayout from './SlideLayout';
 import TouchNavigation from './TouchNavigation';
 
 export default function HomePage() {
+  // Handle animations when the slide loads
+  useEffect(() => {
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.animate');
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          (element as HTMLElement).style.opacity = '1';
+          (element as HTMLElement).style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+      
+      // Add race-in animation class to elements
+      document.querySelectorAll('.racing-stripes .stripe').forEach((stripe, i) => {
+        stripe.classList.add('animate', 'race');
+        (stripe as HTMLElement).style.animationDelay = `${0.1 * i}s`;
+      });
+      
+      // Add bounce animation to presenter image
+      const presenterImage = document.querySelector('.presenter-image');
+      if (presenterImage) {
+        presenterImage.classList.add('animate', 'bounce');
+        (presenterImage as HTMLElement).style.animationDelay = '0.8s';
+      }
+    }, 200);
+    
+    // Check if we're on a mobile device
+    const isMobile = window.innerWidth <= 768 || 
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Apply mobile-specific enhancements
+    if (isMobile) {
+      document.body.classList.add('mobile-device');
+      
+      // Make nav buttons more prominent on mobile
+      const navButtons = document.querySelectorAll('.nav-button');
+      navButtons.forEach(btn => {
+        (btn as HTMLElement).style.width = '65px';
+        (btn as HTMLElement).style.height = '65px';
+      });
+    }
+  }, []);
+
   return (
     <SlideLayout slideNumber={1} totalSlides={8} slideId="title">
       <div className="diagonal-accent"></div>
@@ -28,8 +71,12 @@ export default function HomePage() {
                 src="/images/profile.jpeg" 
                 alt="Drew Lambert" 
                 width={120} 
-                height={120} 
-                layout="responsive"
+                height={120}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
               />
             </div>
             <div className="presenter-info">
@@ -195,12 +242,6 @@ export default function HomePage() {
           position: relative;
         }
         
-        .presenter-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        
         .presenter-info h3 {
           font-size: 1.8rem;
           font-weight: 700;
@@ -273,6 +314,41 @@ export default function HomePage() {
         .stripe.dark {
           width: 60%;
           background: #333;
+        }
+        
+        /* Enhanced animation for title elements */
+        .animate {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .animate.slide-right {
+          transform: translateX(50px);
+        }
+        
+        .animate.slide-left {
+          transform: translateX(-50px);
+        }
+        
+        .animate.zoom {
+          transform: scale(0.8);
+        }
+        
+        .animate.delay-1 {
+          transition-delay: 0.2s;
+        }
+        
+        .animate.delay-2 {
+          transition-delay: 0.4s;
+        }
+        
+        .animate.delay-3 {
+          transition-delay: 0.7s;
+        }
+        
+        .animate.delay-4 {
+          transition-delay: 1s;
         }
         
         /* Responsive adjustments */
