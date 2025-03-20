@@ -11,7 +11,12 @@
     "export": "next build",
     "copy-images": "node copy-images.js",
     "setup": "npm install && npm run copy-images",
-    "deploy": "node deploy.js"
+    "deploy": "node deploy.js",
+    "deploy:vercel": "node deploy-vercel.js",
+    "deploy:static": "node deploy-static.js",
+    "deploy:simple": "node deploy-simple.js",
+    "deploy:manual": "node deploy-manual.js",
+    "deploy:github": "node deploy-to-github.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",

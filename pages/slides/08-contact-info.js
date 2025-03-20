@@ -206,7 +206,8 @@ const ContactInfo = () => {
         @media (max-width: 768px) {
             #slide-7 .slide-content {
                 padding-bottom: 150px;
-                min-height: 120vh;
+                min-height: auto;
+                height: auto;
             }
             
             .thank-you-slide h2 {
@@ -644,6 +645,16 @@ const ContactInfo = () => {
             .thank-you-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+            
+            .contact-card {
+                height: auto;
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
         

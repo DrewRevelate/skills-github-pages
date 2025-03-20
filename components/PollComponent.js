@@ -4,7 +4,7 @@ import supabase from '../utils/supabaseClient';
 
 const PollComponent = ({ pollId, question, options }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [error, setError] = useState(null);
@@ -80,8 +80,14 @@ const PollComponent = ({ pollId, question, options }) => {
         if (insertError) throw insertError;
       }
       
-      // Fetch updated results
-      await fetchResults();
+      // Update local state with the new vote to avoid extra fetch
+      setResults(prev => {
+        const newResults = { ...prev };
+        newResults[selectedOption] = (newResults[selectedOption] || 0) + 1;
+        return newResults;
+      });
+      
+      setTotalVotes(prev => prev + 1);
       setShowResults(true);
     } catch (err) {
       console.error('Error submitting vote:', err);
@@ -89,6 +95,11 @@ const PollComponent = ({ pollId, question, options }) => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Skip voting and just show results
+  const skipToResults = () => {
+    setShowResults(true);
   };
 
   // Calculate percentage for an option
@@ -105,10 +116,10 @@ const PollComponent = ({ pollId, question, options }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       style={{
-        background: 'rgba(255, 255, 255, 0.05)',
+        background: 'rgba(20, 20, 20, 0.6)',
         padding: '1.5rem',
         borderRadius: '12px',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         maxWidth: '700px',
         margin: '2rem auto',
@@ -127,7 +138,7 @@ const PollComponent = ({ pollId, question, options }) => {
           top: 0,
           left: 0,
           height: '4px',
-          background: 'linear-gradient(90deg, var(--racing-red), transparent)'
+          background: 'linear-gradient(90deg, var(--racing-red), var(--accent-yellow))'
         }}
       />
       
@@ -178,11 +189,11 @@ const PollComponent = ({ pollId, question, options }) => {
             {options.map((option, index) => (
               <motion.button
                 key={option.id}
-                whileHover={{ scale: 1.02, boxShadow: '0 5px 15px rgba(225, 6, 0, 0.2)' }}
+                whileHover={{ scale: 1.02, x: 8, boxShadow: '0 5px 15px rgba(225, 6, 0, 0.2)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setSelectedOption(option.id)}
                 style={{
-                  background: selectedOption === option.id ? 'rgba(225, 6, 0, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                  background: selectedOption === option.id ? 'rgba(225, 6, 0, 0.2)' : 'rgba(50, 50, 50, 0.8)',
                   padding: '1rem',
                   borderRadius: '8px',
                   border: selectedOption === option.id ? '1px solid var(--racing-red)' : '1px solid rgba(255, 255, 255, 0.1)',
@@ -193,7 +204,9 @@ const PollComponent = ({ pollId, question, options }) => {
                   gap: '10px',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  fontSize: '1.15rem',
+                  fontWeight: '500'
                 }}
               >
                 <motion.span
@@ -209,7 +222,8 @@ const PollComponent = ({ pollId, question, options }) => {
                     background: selectedOption === option.id ? 'var(--racing-red)' : 'rgba(255, 255, 255, 0.1)',
                     color: 'white',
                     fontWeight: 'bold',
-                    fontSize: '0.8rem'
+                    fontSize: '0.8rem',
+                    minWidth: '24px'
                   }}
                 >
                   {selectedOption === option.id ? '✓' : index + 1}
@@ -218,30 +232,57 @@ const PollComponent = ({ pollId, question, options }) => {
               </motion.button>
             ))}
             
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 8px 25px rgba(225, 6, 0, 0.3)' }}
-              whileTap={{ scale: 0.95 }}
-              onClick={submitVote}
-              disabled={!selectedOption || isSubmitting}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: selectedOption ? 1 : 0.5, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              style={{
-                background: 'var(--racing-red)',
-                color: 'white',
-                padding: '0.8rem 1.5rem',
-                borderRadius: '8px',
-                border: 'none',
-                marginTop: '1rem',
-                cursor: selectedOption ? 'pointer' : 'not-allowed',
-                fontWeight: 'bold',
-                boxShadow: '0 5px 15px rgba(225, 6, 0, 0.2)',
-                alignSelf: 'center',
-                opacity: selectedOption ? 1 : 0.5
-              }}
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit Vote'}
-            </motion.button>
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between',
+              marginTop: '1.5rem',
+              gap: '1rem'
+            }}>
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 8px 25px rgba(225, 6, 0, 0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                onClick={submitVote}
+                disabled={!selectedOption || isSubmitting}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: selectedOption ? 1 : 0.5, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                style={{
+                  background: 'var(--racing-red)',
+                  color: 'white',
+                  padding: '0.8rem 1.5rem',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: selectedOption ? 'pointer' : 'not-allowed',
+                  fontWeight: 'bold',
+                  boxShadow: '0 5px 15px rgba(225, 6, 0, 0.2)',
+                  flex: '1',
+                  opacity: selectedOption ? 1 : 0.5,
+                  fontSize: '1.1rem'
+                }}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Answer'}
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={skipToResults}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                style={{
+                  background: 'transparent',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  padding: '0.8rem 1.5rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '1rem'
+                }}
+              >
+                Just Show Results
+              </motion.button>
+            </div>
           </motion.div>
         ) : (
           /* Results view */
@@ -257,6 +298,15 @@ const PollComponent = ({ pollId, question, options }) => {
               gap: '1rem'
             }}
           >
+            <h4 style={{ 
+              textAlign: 'center',
+              fontSize: '1.2rem',
+              marginBottom: '1rem',
+              color: 'white'
+            }}>
+              Class Results
+            </h4>
+            
             {options.map((option) => {
               const percentage = calculatePercentage(option.id);
               
@@ -273,10 +323,21 @@ const PollComponent = ({ pollId, question, options }) => {
                   <div style={{ 
                     display: 'flex', 
                     justifyContent: 'space-between',
-                    marginBottom: '0.3rem'
+                    marginBottom: '0.3rem',
+                    color: 'white'
                   }}>
-                    <span>{option.text}</span>
-                    <span>{percentage}%</span>
+                    <span style={{
+                      fontSize: '1.1rem',
+                      fontWeight: selectedOption === option.id ? '600' : '400'
+                    }}>
+                      {option.text}
+                    </span>
+                    <span style={{
+                      fontWeight: '600',
+                      color: selectedOption === option.id ? 'var(--racing-red)' : 'white'
+                    }}>
+                      {percentage}%
+                    </span>
                   </div>
                   
                   <div style={{
@@ -292,8 +353,11 @@ const PollComponent = ({ pollId, question, options }) => {
                       transition={{ duration: 0.8, ease: "easeOut" }}
                       style={{
                         height: '100%',
-                        background: 'var(--racing-red)',
-                        borderRadius: '6px'
+                        background: selectedOption === option.id 
+                          ? 'var(--racing-red)' 
+                          : 'linear-gradient(90deg, var(--racing-red), var(--accent-yellow))',
+                        borderRadius: '6px',
+                        boxShadow: selectedOption === option.id ? '0 0 10px rgba(225, 6, 0, 0.3)' : 'none'
                       }}
                     />
                   </div>

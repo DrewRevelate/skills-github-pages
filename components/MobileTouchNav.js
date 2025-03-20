@@ -29,7 +29,7 @@ const MobileTouchNav = ({ prevSlide, nextSlide }) => {
     let touchEndTime = 0;
     
     // Configuration parameters
-    const MIN_SWIPE_DISTANCE = 50; // Minimum horizontal distance for a swipe (px)
+    const MIN_SWIPE_DISTANCE = 40; // Reduced minimum distance for more responsive swipes (px)
     const MIN_HORIZONTAL_RATIO = 1.5; // Min horizontal/vertical ratio for swipe
     const MAX_SWIPE_TIME = 1000; // Maximum time for a swipe to be valid (ms)
     

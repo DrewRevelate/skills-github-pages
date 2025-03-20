@@ -514,13 +514,14 @@ const PresenterProfile = () => {
             
             #slide-1 .slide-content {
               padding: 2rem 1.5rem;
-              padding-bottom: 500px; /* Extreme padding to ensure everything is visible */
+              padding-bottom: 120px; /* Reduced padding for better mobile layout */
             }
           }
           
           @media (max-width: 480px) {
             #slide-1 .slide-content {
-              padding-bottom: 600px; /* Even more padding for smallest screens */
+              padding-bottom: 150px; /* Reduced padding for better mobile layout */
+              padding-top: 1rem;
             }
             
             .company-block {

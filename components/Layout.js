@@ -11,6 +11,9 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
       currentSlide.classList.add('active');
     }
     
+    // Force window scroll to top on slide load
+    window.scrollTo(0, 0);
+    
     // Check if we're on a mobile device
     const isMobile = window.innerWidth <= 768 || 
                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -78,7 +81,6 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
         <meta name="theme-color" content="#121212" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
       </Head>
 
       <div className="presentation-container">
@@ -121,6 +123,16 @@ const Layout = ({ children, title, currentSlide, totalSlides, prevSlide, nextSli
         prevSlide={prevSlide}
         nextSlide={nextSlide}
       />
+
+      <style jsx global>{`
+        .nav-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          color: white;
+        }
+      `}</style>
     </>
   );
 };

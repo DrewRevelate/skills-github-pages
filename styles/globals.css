@@ -1482,9 +1482,11 @@ body {
   
   /* Allow content to scroll on mobile */
   .slide .slide-content {
-    padding-bottom: 80px; /* Space for navigation */
+    padding-bottom: 120px; /* More space for navigation */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    height: auto;
+    min-height: 100%;
   }
   
   .main-title {
