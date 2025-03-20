@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <rect width="150" height="150" fill="#fff" />
+  <rect x="20" y="20" width="110" height="110" fill="#e10600" />
+  <text x="75" y="85" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">
+    LOGO
+  </text>
+</svg>
