@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../../components/Layout';
 
 const PresenterProfile = () => {
+  // Add animation handling outside of the Layout component to ensure it runs correctly
+  useEffect(() => {
+    // Enhanced animations with staggered timing (matching HTML version)
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.animate');
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+
+      // Add bounce animation to profile image
+      const profileImage = document.querySelector('.profile-image');
+      if (profileImage) {
+        profileImage.classList.add('bounce');
+      }
+    }, 200);
+  }, []);
+
   return (
     <Layout
       title="Presenter Profile - Full Throttle Revenue"
@@ -174,6 +194,12 @@ const PresenterProfile = () => {
             position: relative;
             overflow: hidden;
             margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+          
+          .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(225, 6, 0, 0.4);
           }
           
           .profile-image img {
@@ -247,6 +273,12 @@ const PresenterProfile = () => {
             border-radius: 10px;
             padding: 1.2rem 1.5rem;
             border-left: 4px solid var(--racing-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+          
+          .company-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
           }
           
           .profile-company {
@@ -322,6 +354,7 @@ const PresenterProfile = () => {
             font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
           }
           
           .specialty-item:hover {
@@ -342,6 +375,12 @@ const PresenterProfile = () => {
             margin-right: 0.8rem;
             flex-shrink: 0;
             box-shadow: 0 3px 10px rgba(225, 6, 0, 0.2);
+            transition: all 0.3s ease;
+          }
+          
+          .specialty-item:hover .specialty-icon {
+            background: rgba(225, 6, 0, 0.3);
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.4);
           }
           
           .specialty-icon svg {
@@ -349,6 +388,41 @@ const PresenterProfile = () => {
             height: 16px;
             stroke: var(--racing-red);
             stroke-width: 2;
+          }
+          
+          /* Animation classes */
+          .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+          }
+          
+          .active .animate {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          
+          .delay-1 {
+            transition-delay: 0.2s;
+          }
+          
+          .delay-2 {
+            transition-delay: 0.4s;
+          }
+          
+          .delay-3 {
+            transition-delay: 0.6s;
+          }
+          
+          @keyframes bounce-in {
+            0% { opacity: 0; transform: scale(0.8); }
+            40% { opacity: 1; transform: scale(1.1); }
+            60% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+          }
+          
+          .bounce {
+            animation: bounce-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
           
           /* Media queries for responsiveness */
@@ -401,12 +475,16 @@ const PresenterProfile = () => {
             }
             
             .company-block {
-              margin-bottom: 3rem;
+              margin-bottom: 1.5rem;
               padding: 2rem;
             }
             
+            .company-block:last-child {
+              margin-bottom: 0;
+            }
+            
             .profile-companies {
-              margin-bottom: 5rem;
+              margin-bottom: 2rem;
             }
             
             .profile-name {
@@ -442,7 +520,23 @@ const PresenterProfile = () => {
           
           @media (max-width: 480px) {
             #slide-1 .slide-content {
-              padding-bottom: 600px; /* Extreme padding for smallest screens */
+              padding-bottom: 600px; /* Even more padding for smallest screens */
+            }
+            
+            .company-block {
+              padding: 1.5rem;
+            }
+            
+            .profile-company {
+              font-size: 1.3rem;
+            }
+            
+            .profile-role {
+              font-size: 1.1rem;
+            }
+            
+            .profile-description {
+              font-size: 1rem;
             }
           }
         `}</style>
