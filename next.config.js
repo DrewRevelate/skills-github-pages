@@ -35,7 +35,7 @@ const nextConfig = {
       },
       {
         // Cache static assets for better performance
-        source: '/images/(.*)',
+        source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -44,8 +44,18 @@ const nextConfig = {
         ],
       },
       {
-        // Cache CSS/JS files
-        source: '/(.*)\\.(?:css|js)$',
+        // Cache CSS files
+        source: '/:path*.css',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache JS files
+        source: '/:path*.js',
         headers: [
           {
             key: 'Cache-Control',
