@@ -110,8 +110,20 @@ const SalesTechTimeline = () => {
     }
   };
 
+  // Add mobile media query styling
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  
+  const timelineContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : '240px 1fr',
+    gap: isMobile ? '1.5rem' : '2rem',
+    height: '100%',
+    width: '100%',
+    padding: '2rem 0'
+  };
+  
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 0, height: '100%', width: '100%', padding: 0 }}>
+    <div style={timelineContainerStyle}>
       {/* Timeline Column (Left) */}
       <div className="timeline-column" style={{
         position: 'relative',

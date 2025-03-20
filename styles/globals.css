@@ -106,9 +106,16 @@ body {
   color: white;
   height: 100%;
   overflow-y: auto;
-  padding-bottom: 60px; /* Space for navigation */
+  padding: 3rem 4rem 60px; /* Added generous padding */
   -webkit-overflow-scrolling: touch;
   min-height: auto;
+  margin: 0 auto;
+  max-width: 1600px; /* Prevent extreme stretching on large screens */
+}
+
+.slide .slide-header {
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .slide .slide-header h2 {
@@ -359,9 +366,9 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 4rem;
   position: relative;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -879,9 +886,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  .slide .slide-content {
+    padding: 2rem 2rem 60px;
+  }
+  
   .title-container {
-      padding: 1.5rem;
-      padding-bottom: 100px;
+      padding: 1.5rem 2rem 100px;
       justify-content: flex-start;
       height: 100%;
       overflow-y: auto;
